@@ -43,14 +43,16 @@
             <div class="values">
                 <h3>다방면으로 기술을 공부하여 서비스를 구축해보려는 시도를 합니다.</h3>
                 <ul>
-                    <li>-(내가 채워놓을 것)</li>
-                    <li>-(내가 채워놓을 것)</li>
-                </ul>
+                    <li>단순히 프로그래밍 언어를 공부하는 것이 아닌, <strong>전체적인 프로세스 흐름</strong>을 파악하는 것을 중요하게 생각합니다.</li>
+                    <li><span class="muted-text">"승현님 덕에 개발이 편했어요"</span> 라는 말을 듣는 것이 좋습니다. 초기 환경 구축, 모니터링, CI/CD 작업의 자동화 등 <strong>팀의 생산성 향상</strong>을 위해 적극적으로 기여하고 있습니다.</li>
+                    <li>나만 알고 넘어가는 것이 아니라, 팀원들도 이해할 수 있도록 학습한 내용과 문제 해결 과정을 <strong>문서로 정리하고 공유</strong>하고 있습니다.</li>
+                  </ul>
 
                 <h3>맡은 일에 책임감을 느끼며 잘 마무리 하는 것을 중요하게 여깁니다.</h3>
                 <ul>
-                    <li>-(내가 채워놓을 것)</li>
-                    <li>-(내가 채워놓을 것)</li>
+                    <li>자신만이 아는 것이 아니라 해당 코드를 <strong>유지보수</strong>할 뒤에 사람을 위한 <strong>가이드를 제시</strong>합니다.</li>
+                    <li>시간에 따라 자연스럽게 변화하는 서비스에 맞춰 <strong>확장성과 유지보수를 용이</strong>하게 하는 코드를 작성합니다.</li>
+                    <li>단순히 개발을 하는 직군이 아닌 <strong>타 팀과의 협력에 적극적으로 참여</strong>하여, 의견을 내는 것이 더 좋은 서비스를 만들거라 생각합니다.</li>
                 </ul>
             </div>
           </div>
@@ -67,7 +69,7 @@
             <div class="work-meta sticky">
               <img src="assets/KYOBO_DTS.webp" alt="KYOBO_DTS logo" />
               <div class="info">
-                <h3>KYOBO_DTS</h3>
+                <h3>KYOBO_DTS CSPM</h3>
                 <span>DevOps / Backend / Frontend</span>
                 <span>2024.07 - 2024.08 (2개월)</span>
                 <span>6인 개발</span>
@@ -125,21 +127,21 @@
                 <strong>DB 테이블 과다 생성 문제 </strong>
                 <span class="quote-detail muted">문제: 자원별 테이블 분리로 AWS 수집 자원이 늘어날때마다 DB 테이블이 늘어나야 되는 상황 발생 그로 인해 유지보수 및 확장성 문제 발생.</span>
                 <span class="quote-detail muted">해결: 모든 자원을 JSON 형태로 단일 테이블에 저장하도록 변경. 리소스 타입은 구분 필드로 관리해 기존 14개 이상 테이블을 1개로 통합.</span>
-                <span class="quote-detail muted">배운점: 확장성이 요구되는 도메인에서는 “정적 스키마 설계”보다 “유연한 데이터 모델”이 중요하고 생각하게 되었습니다.</span>
+                <span class="quote-detail muted">배운점: 확장성이 요구되는 도메인에서는 “정적 스키마 설계”보다 “유연한 데이터 모델”이 중요하고 생각하게 되었습니다. 이로 인해 NoSQL에 관심을 가지게 되었습니다.</span>
               </p>
 
               <p class="quote">
                 <strong>자원 중복 저장 및 취약점 판단 방식 고도화</strong>
                 <span class="quote-detail muted">문제: 스캔 시 중복 자원 저장으로 데이터 적재가 과다.</span>
-                <span class="quote-detail muted">해결: JSON 키 정렬 후 문자열 비교로 변경 여부 판단해 변경이 없으면 timestamp만 갱신. 이후 해시 기반 비교 도입 검토.</span>
-                <span class="quote-detail muted">배운점: 데이터 비교는 “내용 기반 비교”가 아닌 “구조 표준화 후 비교”가 필요하다고 느낍니다.</span>
+                <span class="quote-detail muted">해결: JSON 키 정렬 후 문자열 비교로 변경 여부 판단해 변경이 없으면 timestamp만 갱신.</span>
+                <span class="quote-detail muted">배운점: 데이터 비교는 “내용 기반 비교”가 아닌 “구조 표준화 후 비교”가 필요하다고 느낍니다. 또한 해시 기반의 비교를 하면 더 최적화를 할 수 있다는 것을 깨달았습니다.</span>
               </p>
 
               <p class="quote">
                 <strong>기존 코드 기반 기능 확장</strong>
                 <span class="quote-detail muted">문제: 이미 일부 구현된 코드에 새로운 요구사항을 반영해야 하는 상황</span>
                 <span class="quote-detail muted">해결: 먼저 핵심 로직을 분석하고 관련 메서드를 디버깅해 역할을 파악한 뒤, 점진적으로 기능을 구현하고 기존 코드와 통합.</span>
-                <span class="quote-detail muted">배운점: 레거시 코드 확장은 수정으로 시작하는게 아니라 이해부터 시작해야 된다고 생각하게 되었습니다.</span>
+                <span class="quote-detail muted">배운점: 레거시 코드 확장은 수정으로 시작하는게 아니라 이해부터 시작해야 된다고 생각하게 되었습니다. 또한 하나의 기능에 대한 API 명세서가 자세할수록 얼마나 좋은지 느끼게 되었습니다.</span>
               </p>
             </div>
           </div>
@@ -160,7 +162,7 @@
                   <div class="info">
                     <h3>A - 601</h3>
                     <span>DevOps / Backend </span>
-                    <span>2026.01 - 2026.02</span>
+                    <span>2026.01 - 2026.02 (2개월)</span>
                     <span>6 -> 4인 개발(중도 이탈 발생)</span>
                   </div>
                   <div class="meta-links">
@@ -178,7 +180,7 @@
                 <img src="assets/ai_judge_overview.png" alt="프로젝트 개요 이미지" class="project-logo" />
 
                 <h3>⚙️ 핵심 로직</h3>
-                <p>WebSocket 기반의 이벤트 처리, 게임 룸 매니저, 상태 동기화 및 AI 판사 시스템을 이용한 판결이 핵심입니다. </p>
+                <p>WebSocket 기반의 이벤트 처리, 게임 룸 매니저, 상태 동기화와 기존 마피아 게임에 AI 판사 시스템을 이용한 판결이 핵심입니다. </p>
                 <img src="assets/role.gif" alt="역할 분배" class="project-logo" />
                 <img src="assets/judgment.gif" alt="AI 판결" class="project-logo" />
                 <img src="assets/alien.gif" alt="외계인 능력" class="project-logo" />
@@ -194,8 +196,7 @@
                 </p>
                 <p class="quote">
                 <strong>WebSocket 기반 실시간 게임 엔진 설계/구현</strong><br>
-                <span class="quote-detail muted">REST 기반 설계의 한계를 개선하기 위해 서버 타이머 기반 게임 진행 구조를 설계하고 WebSocket으로 전환했습니다.
-또한 Dual Channel(전체/개인)을 구성해 게임 상태와 개인 이벤트를 분리 전달하여 실시간 상호작용을 안정적으로 제공했습니다.</span>
+                <span class="quote-detail muted">REST 기반 설계의 한계를 개선하기 위해 서버 타이머 기반 게임 진행 구조를 설계하고 WebSocket으로 전환했습니다. 또한 Dual Channel(전체/개인)을 구성해 게임 상태와 개인 이벤트를 분리 전달하여 실시간 상호작용을 안정적으로 제공했습니다.</span>
                 </p>
 
                 <h4>DevOps</h4>
@@ -251,7 +252,7 @@
                 <div class="info">
                   <h3>Newstagram</h3>
                   <span>DevOps / Backend </span>
-                  <span>2025.11 - 2025.12</span>
+                  <span>2025.11 - 2025.12 (2개월)</span>
                   <span>5인 개발</span>
                 </div>
                 <div class="meta-links">
@@ -327,7 +328,7 @@
                 <div class="info">
                   <h3>Lime</h3>
                   <span>PM / Backend</span>
-                  <span>2024.03 - 2024.11</span>
+                  <span>2024.03 - 2024.11 (8개월)</span>
                   <span>3인 개발</span>
                 </div>
                 <div class="meta-links">

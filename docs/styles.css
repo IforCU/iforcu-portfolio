@@ -123,6 +123,12 @@
     align-items: center;
     flex-wrap: wrap;
   }
+  .intro .intro-text {
+    flex: 1;
+    min-width: 300px; /* Ensure it doesn't get too small on mobile before wrapping */
+    word-break: keep-all; /* Korean word wrapping style */
+    overflow-wrap: break-word;
+  }
   /* Quote detail toggle */
   .work-content .quote > strong {
     cursor: pointer;
@@ -411,6 +417,10 @@
     font-size: 20px;
     color: var(--green-700);
     font-weight: 700;
+  }
+  .muted-text {
+    color: var(--muted);
+    font-style: italic;
   }
   .muted-small {
     color: var(--muted);
