@@ -123,4 +123,57 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // Convert markdown-like list lines (lines starting with "- ") inside
+  // elements with `.quote-detail.muted` into real nested <ul>/<li> structures.
+  // This lets authors write:
+  //   - first item
+  //   - second item
+  //     - nested item
+  // and have it render with indentation (tab-like effect).
+  function renderMarkdownLists() {
+    const els = Array.from(document.querySelectorAll('.quote-detail.muted'));
+    els.forEach((el) => {
+      const raw = el.textContent || '';
+      const lines = raw.split(/\r?\n/).map((l) => l.replace(/\u00A0/g, ' '));
+      // If none of the lines look like a markdown list, skip.
+      if (!lines.some((ln) => /^\s*-\s+/.test(ln))) return;
+
+      const root = document.createElement('ul');
+      const ulStack = [root];
+
+      lines.forEach((line) => {
+        const m = line.match(/^(\s*)-\s+(.*)$/);
+        if (!m) return; // ignore non-list lines
+        const indent = m[1].replace(/\t/g, '    ').length; // tabs -> 4 spaces
+        const level = Math.floor(indent / 2); // 0 = top
+
+        // Ensure stack has a UL for this level
+        while (ulStack.length <= level) {
+          // create a nested UL under the last LI of the current deepest UL
+          const parentUl = ulStack[ulStack.length - 1];
+          let lastLi = parentUl.lastElementChild;
+          if (!lastLi) {
+            lastLi = document.createElement('li');
+            lastLi.textContent = '';
+            parentUl.appendChild(lastLi);
+          }
+          const newUl = document.createElement('ul');
+          lastLi.appendChild(newUl);
+          ulStack.push(newUl);
+        }
+        while (ulStack.length > level + 1) ulStack.pop();
+
+        const li = document.createElement('li');
+        li.textContent = m[2].trim();
+        ulStack[ulStack.length - 1].appendChild(li);
+      });
+
+      // Replace element content with rendered list
+      el.innerHTML = '';
+      el.appendChild(root);
+    });
+  }
+
+  renderMarkdownLists();
 });
