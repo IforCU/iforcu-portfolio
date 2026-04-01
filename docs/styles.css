@@ -548,3 +548,430 @@
     }
   }
 }
+
+/* 화면에서 인쇄용 URL 텍스트 숨기기 */
+.print-url {
+  display: none;
+}
+
+/* ===== PDF 저장 플로팅 버튼 ===== */
+.pdf-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  background: var(--green-700);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Noto Sans KR', Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  z-index: 1500;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
+}
+.pdf-btn:hover {
+  background: var(--green-500);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+}
+.pdf-btn:active {
+  transform: translateY(0);
+}
+.pdf-btn svg {
+  flex-shrink: 0;
+}
+
+/* ===== 인쇄 / PDF 스타일 ===== */
+@page {
+  size: A4 portrait;
+  margin: 15mm 18mm 18mm 18mm;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── 화면 전용 요소 숨기기 ── */
+  .topbar,
+  .pdf-btn,
+  .site-footer {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    font-size: 9pt !important;
+    font-family: 'Noto Sans KR', Inter, ui-sans-serif, system-ui, sans-serif !important;
+    color: #0b0b0b !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* 페이지 여백은 @page가 담당 */
+  .content {
+    padding: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .section {
+    padding: 0 !important;
+  }
+
+  .work-divider {
+    height: 0.5pt !important;
+    background: #ddd !important;
+    margin: 4pt 0 10pt !important;
+  }
+
+  /* ══════════════════════════════════════
+     페이지 분기 규칙
+     ── About             : 1페이지 (첫 페이지)
+     ── Work > 각 엔트리  : 엔트리마다 새 페이지
+     ── Project > 각 엔트리 : 엔트리마다 새 페이지
+     ── Activities        : 새 페이지 (합산)
+     ══════════════════════════════════════ */
+
+  /* Work 섹션 헤더(h2) → 새 페이지 */
+  #work {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Work 내 두 번째+ 엔트리 → 새 페이지 */
+  #work .work-entry + .work-entry {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Project 섹션 헤더 → 새 페이지 */
+  #project {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Project 내 두 번째+ 엔트리 → 새 페이지 */
+  #project .work-entry + .work-entry {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Activities → 새 페이지 (엔트리는 합산) */
+  #activities {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* 제목 다음에서 페이지 끊기지 않도록 */
+  h2 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 15pt !important;
+    color: #1f7a55 !important;
+    font-weight: 800 !important;
+    margin: 0 0 2pt !important;
+  }
+
+  h3 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    margin: 8pt 0 3pt !important;
+  }
+
+  h4 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    margin: 5pt 0 2pt !important;
+  }
+
+  /* ── About 섹션 ── */
+  .intro .intro-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 16pt !important;
+    align-items: flex-start !important;
+  }
+
+  .photo {
+    flex: 0 0 auto !important;
+  }
+
+  .photo img {
+    width: 90pt !important;
+    height: 90pt !important;
+    border-radius: 50% !important;
+    display: block !important;
+  }
+
+  .intro-text {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .big {
+    font-size: 15pt !important;
+    color: #1f7a55 !important;
+    font-weight: 700 !important;
+    margin: 0 0 6pt !important;
+  }
+
+  .tech-stack,
+  .certs-inline {
+    margin-top: 8pt !important;
+  }
+
+  .tech-stack h3,
+  .certs-inline h3 {
+    font-size: 9pt !important;
+    color: #2fa673 !important;
+    margin: 0 0 4pt !important;
+  }
+
+  .tech-badges,
+  .cert-badges {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4pt !important;
+  }
+
+  .tech-badge {
+    padding: 2pt 7pt !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
+    border-radius: 999px !important;
+    border: 0.5pt solid #bbb !important;
+    background: #fff !important;
+    color: #1f7a55 !important;
+  }
+
+  .cert-badge {
+    padding: 2pt 7pt !important;
+    font-size: 7.5pt !important;
+    font-weight: 600 !important;
+    border-radius: 999px !important;
+    border: 0.5pt solid #ccc !important;
+    background: #f5f5f5 !important;
+    color: #6b6f6a !important;
+  }
+
+  /* values 는 사진+텍스트 아래 전체 너비로 배치 */
+  .values {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 4pt !important;
+    padding-top: 10pt !important;
+    border-top: 0.5pt solid #e8e8e8 !important;
+  }
+
+  .values h3 {
+    font-size: 9pt !important;
+    color: #2fa673 !important;
+    margin: 10pt 0 3pt !important;
+  }
+
+  .values ul {
+    margin: 0 0 0 14pt !important;
+    padding: 0 !important;
+    list-style: disc !important;
+  }
+
+  .values li {
+    font-size: 8.5pt !important;
+    line-height: 1.5 !important;
+    margin: 3pt 0 !important;
+  }
+
+  /* ── Work / Project / Activities 엔트리 공통 2단 레이아웃 ──
+     좌: 메타(회사명·기간) | 우: 내용 */
+  .work-list {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .work-entry {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 16pt !important;
+    padding-top: 6pt !important;
+  }
+
+  /* 좌측 메타 컬럼: 고정 너비 */
+  .work-meta,
+  .work-meta.sticky {
+    flex: 0 0 110pt !important;
+    width: 110pt !important;
+    min-width: 110pt !important;
+    max-width: 110pt !important;
+    position: static !important;
+    top: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4pt !important;
+  }
+
+  .work-meta img {
+    width: 48pt !important;
+    height: 48pt !important;
+    display: block !important;
+    object-fit: contain !important;
+    border-radius: 6pt !important;
+    border: 0.5pt solid #e0e0e0 !important;
+    padding: 4pt !important;
+    background: #fff !important;
+  }
+
+  .work-meta img.no-pad {
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    object-fit: cover !important;
+  }
+
+  .work-meta .info h3 {
+    font-size: 10pt !important;
+    color: #1f7a55 !important;
+    font-weight: 700 !important;
+    margin: 0 0 3pt !important;
+  }
+
+  .work-meta .info span {
+    display: block !important;
+    font-size: 7.5pt !important;
+    color: #6b6f6a !important;
+    line-height: 1.45 !important;
+  }
+
+  /* 인쇄용 링크 영역: 아이콘 대신 텍스트로 표시 */
+  .meta-links {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3pt !important;
+    margin-top: 6pt !important;
+  }
+
+  .meta-link {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    text-decoration: none !important;
+    font-size: 7.5pt !important;
+    color: #1f7a55 !important;
+    line-height: 1.5 !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+  }
+
+  /* 아이콘 이미지 숨기기 */
+  .meta-link img {
+    display: none !important;
+  }
+
+  /* ::before / ::after 제거 (attr(href) 방식은 브라우저마다 잘림) */
+  .meta-link::before,
+  .meta-link::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* HTML에 직접 삽입된 출력용 텍스트 표시 */
+  .print-url {
+    display: block !important;
+    font-size: 7.5pt !important;
+    line-height: 1.5 !important;
+    word-break: break-all !important;
+    overflow-wrap: break-word !important;
+    color: #333 !important;
+  }
+
+  .print-url b {
+    color: #1f7a55 !important;
+    font-weight: 700 !important;
+  }
+
+  /* 우측 내용 컬럼 */
+  .work-content {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    padding-left: 14pt !important;
+    border-left: 1pt solid #e0e0e0 !important;
+  }
+
+  /* quote 단락 */
+  .work-content p {
+    background: #f8f8f8 !important;
+    border-left: 2.5pt solid #c3ddd1 !important;
+    padding: 5pt 10pt !important;
+    margin: 5pt 0 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.55 !important;
+    border-radius: 3pt !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .work-content p.muted {
+    background: transparent !important;
+    border-left-color: #e5e5e5 !important;
+    color: #6b6f6a !important;
+  }
+
+  .work-content .quote > strong {
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    display: block !important;
+    margin-bottom: 3pt !important;
+    color: #0b0b0b !important;
+  }
+
+  .work-content .quote .quote-detail.muted {
+    font-size: 8pt !important;
+    color: #222 !important;
+    line-height: 1.55 !important;
+    display: block !important;
+    margin-top: 3pt !important;
+  }
+
+  /* 프로젝트 이미지 */
+  .project-logo {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 130pt !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 6pt 0 !important;
+    border-radius: 5pt !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* 본문 내 일반 링크 URL 자동 출력 방지 (meta-link::after는 더 높은 명시도로 유지됨) */
+  a:not(.meta-link)::after {
+    content: "" !important;
+    display: none !important;
+  }
+}
