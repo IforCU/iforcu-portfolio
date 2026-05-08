@@ -62,6 +62,9 @@
                 <div class="cert-badges">
                   <span class="cert-badge">정보처리기사 — 2025.06</span>
                   <span class="cert-badge">SQLD — 2025.04</span>
+                  <a class="cert-badge" href="https://www.credly.com/badges/75685925-3f3b-43ec-ad5a-e816ff487d1c/public_url" target="_blank" rel="noopener">
+                    <img src="https://images.credly.com/size/110x110/images/b9feab85-1a43-4f6c-99a5-631b88d5461b/image.png" alt="AWS Certified Developer – Associate" style="width:24px;height:24px;vertical-align:middle;margin-right:4px;" />AWS DVA — 2026.05
+                  </a>
                 </div>
               </div>
           </div>
@@ -229,7 +232,7 @@
                 <p class="quote">
                   <strong>블록체인 트랜잭션 처리 지연 및 장애 대응</strong>
                   <span class="quote-detail muted">문제: 기부 건수가 많아질수록 개별 확정 호출이 <strong>N번 직렬 실행</strong>되어 처리 시간이 선형 증가했고, 실패 시 <strong>DB와 온체인 상태 불일치</strong> 위험이 있었습니다.</span>
-                  <span class="quote-detail muted">해결: <strong>confirmRegionDonationBatch API</strong>로 N개 기부 ID를 한 트랜잭션에 묶어 트랜잭션 발생 횟수를 최소화했습니다. Web3j의 <strong>PollingTransactionReceiptProcessor</strong>로 마이닝 완료를 보장하고, Spring Batch의 <strong>faultTolerant</strong> 설정으로 최대 3회 재시도 및 스킵 로그를 구성했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong> Batch API</strong>로 N개 기부 ID를 한 트랜잭션에 묶어 트랜잭션 발생 횟수를 최소화했습니다. Web3j의 <strong>트랜잭션 receipt 폴링</strong>으로 마이닝 완료 여부를 확인해 완료 전 DB 상태가 먼저 확정되지 않도록 보장하고, Spring Batch의 <strong>faultTolerant</strong> 설정으로 최대 3회 재시도 및 스킵 로그를 구성했습니다.</span>
                   <span class="quote-detail muted">배운점: 블록체인은 단건 요청도 수백 ms~수 초가 소요되는 외부 시스템입니다. 처음부터 <strong>호출 횟수를 최소화하는 배치 설계</strong>과 <strong>재시도·폴링 전략</strong>을 함께 고려해야 안정적인 운영이 가능하다는 것을 실감했습니다.</span>
                 </p>
               </div>
