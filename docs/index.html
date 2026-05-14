@@ -219,21 +219,21 @@
                 <h3>🧯 트러블 슈팅</h3>
                 <p class="quote">
                   <strong>컨트랙트 재배포 시 백엔드/프론트엔드 주소 불일치 문제</strong>
-                  <span class="quote-detail muted">문제: 스마트 컨트랙트를 수정·재배포할 때마다 새 컨트랙트 주소를 각 .env 파일에 <strong>수동으로 복사</strong>해야 했고, 팀원 간 주소 불일치로 <strong>트랜잭션 실패</strong>가 반복됐습니다.</span>
-                  <span class="quote-detail muted">해결: deploy.js에 배포 완료 후 두 .env 파일을 Node.js fs로 <strong>정규식 치환해 자동 업데이트</strong>하는 로직을 추가했습니다. <strong>Docker 볼륨 마운트</strong>로 컨테이너 내 배포 시에도 호스트 파일이 갱신되도록 설정했습니다.</span>
+                  <span class="quote-detail muted">문제: 스마트 컨트랙트를 수정·재배포할 때마다 백엔드·프론트엔드 <strong>.env 파일에 컨트랙트 주소를 수동으로 복사</strong>해야 했고, 팀원 간 주소 불일치로 <strong>트랜잭션 실패</strong>가 반복됐습니다. Sepolia 테스트넷과 로컬 Hardhat 환경 모두에서 동일한 문제가 발생했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>deploy.js</strong>가 배포 완료 즉시 <strong>backend/.env</strong>와 <strong>frontend/.env</strong>를 Node.js fs로 파싱하여 컨트랙트 주소를 <strong>정규식 치환으로 자동 업데이트</strong>하도록 구현했습니다. Sepolia 테스트넷과 로컬 Hardhat 모두 동일 스크립트로 처리하며, <strong>Docker 볼륨 마운트</strong>로 컨테이너 내 배포 시에도 호스트 파일이 갱신되도록 설정했습니다.</span>
                   <span class="quote-detail muted">배운점: <strong>반복되는 수동 설정 작업</strong>은 실수의 온상입니다. 배포 스크립트가 <strong>환경 설정까지 자동으로 갱신</strong>하도록 자동화 범위를 넓히면 팀 전체의 개발 사이클 신뢰도가 높아진다는 것을 체감했습니다.</span>
                 </p>
                 <p class="quote">
-                  <strong>Traefik 경로 기반 라우팅에서 /rpc 접두사 미제거 이슈</strong>
-                  <span class="quote-detail muted">문제: Hardhat JSON-RPC 노드는 루트(/) 경로로 요청을 수신하는데, Traefik이 /rpc 접두사를 <strong>그대로 전달</strong>해 Web3j 및 프론트엔드의 모든 RPC 호출이 <strong>404</strong>로 실패했습니다.</span>
-                  <span class="quote-detail muted">해결: Traefik 라우터에 <strong>stripprefix 미들웨어</strong>를 적용해 /rpc 접두사를 <strong>제거</strong>한 후 Hardhat에 전달했습니다. 동일한 패턴을 /api, /ai 경로에도 적용해 각 서비스가 자체 루트 기준 경로만 처리하도록 통일했습니다.</span>
-                  <span class="quote-detail muted">배운점: 리버스 프록시 경로 설계 시 <strong>업스트림 서비스가 기대하는 경로</strong>를 먼저 파악하고 <strong>접두사 strip 여부</strong>를 명시적으로 결정해야 한다는 것을 배웠습니다.</span>
+                  <strong>Docker 컨테이너 기동 순서로 인한 컨트랙트 배포 실패</strong>
+                  <span class="quote-detail muted">문제: Hardhat 노드 컨테이너가 완전히 준비되기 전에 컨트랙트 배포 스크립트가 실행되어 <strong>RPC 연결 실패로 배포가 중단</strong>됐습니다. Docker Compose의 depends_on만으로는 서비스의 실제 준비 상태를 보장할 수 없었습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>start.sh</strong>에서 <strong>eth_blockNumber JSON-RPC를 wget으로 폴링</strong>하여 Hardhat 노드가 응답을 반환할 때까지 배포 스크립트 실행을 지연시켰습니다. 노드 레디니스가 확인된 후에만 deploy.js를 실행해 배포 순서를 보장했습니다.</span>
+                  <span class="quote-detail muted">배운점: Docker Compose의 <strong>depends_on</strong>은 컨테이너 시작만 보장할 뿐 서비스 준비 여부는 보장하지 않습니다. 실제 서비스 레디니스는 <strong>헬스체크 폴링으로 직접 확인</strong>해야 한다는 것을 배웠습니다.</span>
                 </p>
                 <p class="quote">
-                  <strong>블록체인 트랜잭션 처리 지연 및 장애 대응</strong>
-                  <span class="quote-detail muted">문제: 기부 건수가 많아질수록 개별 확정 호출이 <strong>N번 직렬 실행</strong>되어 처리 시간이 선형 증가했고, 실패 시 <strong>DB와 온체인 상태 불일치</strong> 위험이 있었습니다.</span>
-                  <span class="quote-detail muted">해결: <strong> Batch API</strong>로 N개 기부 ID를 한 트랜잭션에 묶어 트랜잭션 발생 횟수를 최소화했습니다. Web3j의 <strong>트랜잭션 receipt 폴링</strong>으로 마이닝 완료 여부를 확인해 완료 전 DB 상태가 먼저 확정되지 않도록 보장하고, Spring Batch의 <strong>faultTolerant</strong> 설정으로 최대 3회 재시도 및 스킵 로그를 구성했습니다.</span>
-                  <span class="quote-detail muted">배운점: 블록체인은 단건 요청도 수백 ms~수 초가 소요되는 외부 시스템입니다. 처음부터 <strong>호출 횟수를 최소화하는 배치 설계</strong>과 <strong>재시도·폴링 전략</strong>을 함께 고려해야 안정적인 운영이 가능하다는 것을 실감했습니다.</span>
+                  <strong>대규모 수혜자 분배 시 Gas Limit 초과 문제</strong>
+                  <span class="quote-detail muted">문제: 수혜자 수가 증가할수록 단일 <strong>distributeAll 트랜잭션</strong>의 가스 비용이 블록 gas limit을 초과하여 트랜잭션이 실패했고, 수혜자 규모에 따라 <strong>분배 자체가 불가능한 상태</strong>가 발생했습니다.</span>
+                  <span class="quote-detail muted">해결: 분배 로직을 <strong>collectRegionFunds(잠금) → distributeChunk(청크 반복) → finalizeDistribution(완료)</strong> 3단계로 분리하고, 백엔드가 청크 크기를 조절하며 반복 호출하는 방식으로 임의의 수혜자 수를 처리할 수 있도록 설계했습니다. Web3j의 <strong>트랜잭션 receipt 폴링</strong>으로 각 청크 완료 여부를 확인한 뒤 다음 단계를 진행했습니다.</span>
+                  <span class="quote-detail muted">배운점: 블록체인은 <strong>단일 트랜잭션의 연산량에 상한</strong>이 있습니다. 대용량 처리 로직은 처음부터 <strong>청크 분할과 단계별 상태 추적</strong>을 고려해 설계해야 임의의 규모에서도 안정적으로 동작한다는 것을 실감했습니다.</span>
                 </p>
               </div>
             </div>
@@ -283,16 +283,16 @@
 
                 <h3>🧯 트러블 슈팅</h3>
                 <p class="quote">
-                  <strong>Livekit 권한 제어 과정에서의 버전 호환 이슈 해결</strong>
-                  <span class="quote-detail muted">문제: Livekit v3 기반 권한 제어 구현 과정에서, <strong>AI가 생성한 예제 코드</strong>가 최신 서버와 호환되지 않아 메서드 호출 및 권한 적용이 정상 동작하지 않았습니다.</span>
-                  <span class="quote-detail muted">해결: <strong>공식 문서를 기반</strong>으로 권한 관련 메서드와 토큰 발급 방식을 재검증하고, 최신 버전에 맞게 권한 제어 로직을 수정하여 화상/음성 권한을 정상적으로 제어했습니다.</span>
-                  <span class="quote-detail muted">배운점: AI 생성 코드는 참고용일 뿐이며, 실제 적용 전에는 공식 문서 기반 검증과 <strong>버전 호환 확인</strong>이 필수라고 느꼈습니다.</span>
+                  <strong>LiveKit 음성이 밤 페이즈에서 차단되지 않는 현상</strong>
+                  <span class="quote-detail muted">문제: 클라이언트에서 <strong>mute() 처리</strong>만 적용했을 때 서버가 각 플레이어의 권한을 강제할 수 없어, 외계인 플레이어가 밤 시간에도 인간 팀의 음성을 청취하는 <strong>치팅 가능성</strong>이 존재했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>LiveKit RoomServiceClient API</strong>를 활용해 페이즈 전환 시마다 서버에서 각 플레이어의 <strong>canPublish / canSubscribe 권한</strong>을 직접 갱신했습니다. 낮에는 전원 청취 가능, 밤에는 외계인끼리만 청취 가능하도록 역할·생존 여부·페이즈 조합으로 권한을 동적으로 제어했습니다.</span>
+                  <span class="quote-detail muted">배운점: 실시간 게임의 룰 강제는 <strong>클라이언트 처리에만 의존해서는 안 됩니다</strong>. 보안이 중요한 제어는 서버에서 직접 적용해야 클라이언트 조작을 원천 차단할 수 있다는 것을 체감했습니다.</span>
                 </p>
                 <p class="quote">
-                  <strong>Jenkins 기반 CI/CD 구축 중 배포 실패 원인 찾기</strong>
-                  <span class="quote-detail muted">문제: Jenkins 파이프라인을 통해 빌드 흐름을 구성했지만, <strong>서버 배포 단계에서의 문제</strong>로 인해 배포가 정상 수행되지 않았습니다.</span>
-                  <span class="quote-detail muted">해결: Jenkins <strong>로그를 분석</strong>해 <strong>권한 미설정 이슈</strong>를 확인했고, 필요한 실행/접근 권한을 부여하여 Git → Docker → Jenkins → Server 흐름을 안정화했습니다.</span>
-                  <span class="quote-detail muted">배운점: 툴을 단순히 “사용”하는 수준이 아니라, 장애 상황에서 로그 기반으로 원인을 추적하고 복구할 수 있는 <strong>운영 관점이 중요</strong>하다고 생각하게 되었습니다.</span>
+                  <strong>Nginx 리버스 프록시에서 컨테이너 미기동 시 500 에러</strong>
+                  <span class="quote-detail muted">문제: <strong>proxy_pass http://backend:8080</strong>처럼 업스트림을 직접 지정하면, 백엔드 컨테이너가 아직 시작되지 않은 경우 Nginx worker가 죽거나 <strong>500 에러</strong>가 발생했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>resolver 127.0.0.11 valid=30s</strong>(Docker 내부 DNS)와 <strong>set $upstream http://backend:8080</strong> 변수 패턴을 조합해, 업스트림 컨테이너 미기동 상태에서도 Nginx가 정상 기동되고 런타임에 DNS를 재조회하도록 설정했습니다.</span>
+                  <span class="quote-detail muted">배운점: Docker 환경에서 Nginx upstream 설정 시 <strong>서비스 기동 순서와 DNS 재조회 전략</strong>을 함께 고려해야 합니다. 컨테이너 환경에서는 변수 기반 lazy DNS 해석이 안정적인 운영의 기반이 됩니다.</span>
                 </p>
                 <p class="quote">
                   <strong>REST 기반 설계의 실시간성 한계로 WebSocket 전환</strong>
@@ -354,16 +354,16 @@
                   <span class="quote-detail muted">배운점: 배포는 끝이 아니라 시작이며, <strong>운영 환경에서는 모니터링 및 로그 확보가 필수</strong>라고 느꼈습니다.</span>
                 </p>
                 <p class="quote">
-                  <strong>MSA 환경에서 도메인 모델 공유 문제 해결</strong>
-                  <span class="quote-detail muted">문제: MSA로 서버를 분리하면서, <strong>서로 다른 서비스 간 동일한 도메인 모델</strong>을 사용해야 하는 상황이 발생했습니다.</span>
-                  <span class="quote-detail muted">해결: <strong>공통 도메인 모델을 라이브러리 형태로 분리</strong>하여 각 서비스가 동일한 모델을 참조하도록 구조를 개선했습니다.</span>
-                  <span class="quote-detail muted">배운점: MSA는 단순히 서버를 나누는 것이 아니라, <strong>의존성과 책임을 명확히 분리하는 설계</strong> 작업이라는 것을 체감했습니다.</span>
+                  <strong>MSA 멀티 모듈에서 JPA 엔티티 중복 문제 해결</strong>
+                  <span class="quote-detail muted">문제: <strong>api-server, rss-collector, logging-server</strong> 세 모듈로 서버를 분리하면서 동일한 JPA 엔티티를 각 모듈에 <strong>중복 선언</strong>해야 했고, 엔티티 변경 시 모든 모듈을 개별 수정해야 하는 유지보수 문제가 발생했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>newstagram-domain 모듈</strong>을 독립 Gradle 라이브러리로 분리하여 세 서비스가 동일한 JPA 엔티티와 pgVector 도메인 모델을 공유하도록 구조를 개선했습니다. 엔티티 변경 시 <strong>단일 모듈만 수정</strong>하면 되어 유지보수 범위가 명확해졌습니다.</span>
+                  <span class="quote-detail muted">배운점: MSA는 단순히 서버를 나누는 것이 아니라 <strong>공유 자산의 경계와 의존 방향을 명시적으로 설계</strong>하는 작업입니다. 공통 도메인을 라이브러리로 분리하면 중복을 제거하면서도 각 서비스의 독립적 배포를 유지할 수 있음을 체감했습니다.</span>
                 </p>
                 <p class="quote">
-                  <strong>사용자 검색 프롬프트 기반 기사 검색 성능 최적화</strong>
-                  <span class="quote-detail muted">문제: 초기에는 한국어 형태소 분석기(Komoran)를 도입했지만, 단어 분석은 가능해도 사용자 의도까지 파악하지 못했습니다, GPT 모델 적용 시 응답 시간이 길어지는 문제가 발생했습니다.</span>
-                  <span class="quote-detail muted">해결: 단순 형태소 분석 대신 <strong>GPT 기반 </strong>의미 분석으로 전환, <strong>프롬프트 길이와 출력 토큰 수를 조정</strong>하여 <strong>응답 시간 최적화</strong>, 성능과 비용을 고려해 GPT-4o mini 모델을 채택</span>
-                  <span class="quote-detail muted">배운점: AI 모델 선택은 정확도뿐 아니라 응답 속도와 비용을 함께 고려한 균형 설계가 중요하다고 느꼈습니다.</span>
+                  <strong>한국어 자연어 검색 품질과 응답 속도 최적화</strong>
+                  <span class="quote-detail muted">문제: 초기 Komoran 형태소 분석만으로는 <strong>사용자 의도와 시간 표현("요즘", "최근")을 파악하지 못했고</strong>, pgVector 유사도 검색만으로는 키워드 없이 의미만 유사한 관련 없는 결과가 포함됐습니다. 동일 쿼리에 매번 임베딩 API를 재호출해 비용과 응답 지연도 발생했습니다.</span>
+                  <span class="quote-detail muted">해결: <strong>Komoran 명사 추출 + 시간 표현 파싱</strong>(요즘→7일, 최근→3일) → <strong>OpenAI 쿼리 임베딩 + GPT-4o-mini 카테고리 분류</strong> → <strong>pgVector 코사인 유사도 검색(임계값 0.80, 상위 800개)</strong> → <strong>In-memory 키워드 이중 필터링</strong>의 다단계 하이브리드 파이프라인을 구성했습니다. 동일 쿼리는 <strong>@Cacheable</strong>로 Redis에 캐싱해 재호출 시 임베딩 API 없이 즉시 반환합니다.</span>
+                  <span class="quote-detail muted">배운점: 의미 검색과 키워드 검색은 각각 한계가 있으며 <strong>하이브리드 파이프라인</strong>으로 보완할 때 검색 품질이 높아집니다. AI API 호출은 <strong>캐싱 전략과 모델 선택</strong>으로 비용·속도 균형을 함께 고려해야 한다는 것을 배웠습니다.</span>
                 </p>
                 <p class="quote">
                   <strong>클라우드 비용 과다 청구 (Kafka 설정 오류)</strong>
