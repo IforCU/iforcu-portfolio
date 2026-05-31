@@ -67,7 +67,7 @@ function renderPrintAbout(profile, cases, page, totalPages) {
     printTop("ABOUT / PROJECT PREVIEW", page, totalPages),
     pdfEl("div", { className: "print-two-column" }, [
       pdfEl("div", { className: "print-about-main" }, [
-        pdfEl("h1", { className: "print-title" }, "전체 흐름을 보고, 유지 가능한 구조로 정리합니다."),
+        pdfEl("h1", { className: "print-title" }, "About Me"),
         pdfEl("div", { className: "print-panel print-about-copy" }, [
           renderPrintAboutCopy(profile),
         ]),
@@ -130,7 +130,7 @@ function renderPrintTroubleDetailSlide(item, page, totalPages) {
     printTop("TROUBLESHOOTING DETAIL", page, totalPages),
     pdfEl("div", { className: "print-detail-head" }, [
       pdfEl("div", {}, [
-        pdfEl("h1", { className: "print-title" }, `${item.title} Troubleshooting`),
+        pdfEl("h1", { className: "print-title" }, `${item.title}`),
         pdfEl("p", { className: "print-case-meta" }, [
           item.roles.join(" / "),
           " · ",
@@ -255,6 +255,7 @@ function renderPrintAboutCopy(profile) {
   const valueItems = (profile.values || []).flatMap((group) => group.items || []).slice(0, 4);
 
   return pdfEl("div", { className: "print-about-copy-inner" }, [
+    pdfEl("strong", { className: "print-about-statement" }, "전체 흐름을 보고, 유지 가능한 구조로 정리합니다."),
     pdfEl("p", {}, renderPdfInlineText(profile.about)),
     pdfEl("ul", { className: "print-about-bullet-list" }, valueItems.map((item) =>
       pdfEl("li", {}, renderPdfInlineText(item)),

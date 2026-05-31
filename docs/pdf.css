@@ -117,7 +117,7 @@
   position: relative;
   z-index: 2;
   height: 9mm;
-  margin-bottom: 8mm;
+  margin-bottom: 4mm;
 }
 
 .print-footer {
@@ -2049,4 +2049,21 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+}
+
+/* Keep the exported PDF flat and print-clean. */
+.print-page *,
+.print-page *::before,
+.print-page *::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.print-about-statement {
+  display: block;
+  color: #0f172a;
+  font-size: 14.5pt;
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
 }
