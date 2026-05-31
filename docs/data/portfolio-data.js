@@ -7,9 +7,9 @@ window.PORTFOLIO_DATA = {
     },
     "role": "Backend Developer",
     "photo": "assets/profile.webp",
-    "webIntro": "안녕하세요. 백엔드 개발자 김승현입니다.",
-    "summary": "운영 관점에서 API, 데이터, 배포 흐름을 함께 설계하고 반복 작업을 자동화하는 백엔드/DevOps 개발자입니다.",
-    "about": "주어진 기능 구현에 머무르기보다 서비스가 배포되고 운영되는 흐름을 함께 이해하려고 합니다. 백엔드 API, 데이터 모델, 인프라 자동화, 팀 문서화까지 연결해 개발자가 더 편하게 일할 수 있는 환경을 만드는 데 집중합니다.",
+    "webIntro": "안녕하세요. **백엔드/DevOps 개발자 김승현**입니다.",
+    "summary": "**운영 관점**에서 API, 데이터, 배포 흐름을 함께 설계하고 반복 작업을 자동화하는 백엔드/DevOps 개발자입니다.",
+    "about": "주어진 기능 구현에 머무르기보다 서비스가 **배포되고 운영되는 전체 흐름**을 함께 이해하려고 합니다. 백엔드 API, 데이터 모델, 인프라 자동화, 팀 문서화까지 연결해 개발자가 더 편하게 일할 수 있는 환경을 만드는 데 집중합니다.",
     "contacts": {
       "email": {
         "label": "Email",
@@ -121,7 +121,7 @@ window.PORTFOLIO_DATA = {
       {
         "title": "SQLD",
         "date": "2025.04"
-      }
+      },
     ],
     "activities": [
       {
@@ -166,7 +166,7 @@ window.PORTFOLIO_DATA = {
         "src": "assets/KYOBO_DTS.webp",
         "alt": "KYOBO_DTS logo"
       },
-      "overview": "Cloud Security Posture Management 기반으로 AWS 자원을 수집, 스캔하여 취약점을 탐지하고 상태를 관리하는 시스템입니다.",
+      "overview": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 자원을 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다.",
       "process": [
         "AWS 자원 수집",
         "정책 기반 취약점 판단",
@@ -188,10 +188,10 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "AWS SDK 기반 자원 스캔 로직 개발 및 고도화",
-        "DB 테이블 재설계",
-        "취약점 탐지 및 상태 관리 시스템 설계/구현",
-        "CI 구성 및 개발 환경 가이드",
+        "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
+        "확장성을 고려한 **DB 테이블 재설계**",
+        "**취약점 탐지 및 상태 관리 시스템** 설계/구현",
+        "CI 구성 및 개발 환경 가이드 문서화",
         "사내망 배포 및 접근 제어 개선"
       ],
       "troubleshooting": [
@@ -225,7 +225,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "Cloud Security Posture Management(CSPM) 기반으로 AWS 자원을 수집, 스캔하여 취약점을 탐지하고 상태를 관리하는 시스템입니다."
+          "text": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 계정의 리소스를 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다. 자원 수집부터 취약점 판단, 상태 추적, 사내망 배포까지 담당하며 운영 가능한 구조를 만드는 데 집중했습니다."
         },
         {
           "type": "image",
@@ -238,7 +238,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "자원 수집, 정책 기반 취약점 판단, 상태 트래킹(OPEN/EXCEPTION/CLOSE)을 위한 파이프라인과 스케줄러가 핵심입니다."
+          "text": "**자원 수집 → 정책 기반 취약점 판단 → OPEN/EXCEPTION/CLOSE 상태 트래킹**으로 이어지는 파이프라인과 스케줄러가 핵심입니다. AWS 자원이 늘어나도 데이터 모델과 상태 관리 흐름이 무너지지 않도록 구조를 정리했습니다."
         },
         {
           "type": "image",
@@ -286,16 +286,16 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Backend",
           "items": [
-            "AWS SDK 기반 자원 스캔 로직 개발 및 고도화",
-            "DB 테이블 재설계",
-            "취약점 탐지 및 상태 관리 시스템 설계/구현"
+            "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
+            "자원 타입 증가에 대응하기 위한 **DB 테이블 재설계**",
+            "**취약점 탐지 및 상태 관리 시스템** 설계/구현"
           ]
         },
         {
           "role": "DevOps",
           "items": [
-            "CI 구성 및 개발 환경 가이드",
-            "사내망 배포 및 접근 제어 개선"
+            "**CI 구성 및 개발 환경 가이드** 문서화",
+            "**사내망 배포 및 접근 제어** 개선"
           ]
         }
       ]
@@ -316,13 +316,13 @@ window.PORTFOLIO_DATA = {
         "alt": "AutoQA logo",
         "noPad": true
       },
-      "overview": "사용자가 테스트 대상 URL과 자연어 요구사항을 입력하면 웹 페이지를 자동 분석하고, AI가 생성한 QA 시나리오를 실제 브라우저에서 실행하여 결과 리포트까지 제공하는 AI 기반 웹 QA 자동화 플랫폼입니다.",
+      "overview": "사용자가 테스트 대상 URL과 자연어 요구사항을 입력하면 웹 페이지를 자동 분석하고, AI가 생성한 QA 시나리오를 실제 브라우저에서 실행해 결과 리포트까지 제공하는 **AI 기반 웹 QA 자동화 플랫폼**입니다.",
       "process": [
-        "URL 입력",
-        "Playwright 웹 분석",
-        "AI 시나리오 생성",
+        "URL 분석",
+        "QA 시나리오 생성",
         "브라우저 실행",
-        "결과 리포트"
+        "실시간 증적 수집",
+        "리포트 제공"
       ],
       "tech": [
         "Playwright",
@@ -345,14 +345,14 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "웹 분석 크롤 엔진 개발",
-        "QA 실행 엔진 개발",
-        "실시간 증적 전달",
-        "AI 입력 및 학습 데이터 연계",
-        "AWS 기반 비동기 파이프라인 설계",
-        "Terraform 기반 인프라 코드화",
+        "**Playwright 기반 웹 분석 크롤 엔진** 개발",
+        "**QA 실행 엔진** 개발 및 실행 안정화",
+        "스크린샷·영상·결과 로그의 **실시간 증적 전달**",
+        "AI 입력 데이터와 학습 데이터 연계",
+        "**AWS SQS/S3/ECS Worker 기반 비동기 파이프라인** 설계",
+        "**Terraform 기반 인프라 코드화**",
         "Jenkins CI/CD 구축",
-        "예열용 ECS Worker 및 Shell Script 구현"
+        "예열용 ECS Worker 및 운영 Shell Script 구현"
       ],
       "troubleshooting": [
         {
@@ -392,7 +392,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "AutoQA는 사용자가 테스트 대상 URL과 자연어 요구사항을 입력하면, 웹 페이지를 자동 분석하고 AI가 생성한 QA 시나리오를 실제 브라우저에서 실행하여 결과 리포트까지 제공하는 **AI 기반 웹 QA 자동화 플랫폼**입니다."
+          "text": "AutoQA는 사용자가 **테스트 대상 URL**과 **자연어 요구사항**을 입력하면, 웹 페이지를 자동 분석하고 AI가 생성한 QA 시나리오를 실제 브라우저에서 실행하여 결과 리포트까지 제공하는 **AI 기반 웹 QA 자동화 플랫폼**입니다."
         },
         {
           "type": "heading",
@@ -400,7 +400,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "Playwright Worker가 웹 화면의 구성과 클릭·입력 가능한 요소를 분석해 **사용자가 이용할 수 있는 기능 흐름**으로 정리하고, AI가 작성한 테스트 절차를 실제 브라우저에서 다시 검증합니다. 분석, AI 생성, 실행은 작업 큐 기반으로 처리하며, 스크린샷과 실행 결과는 실시간으로 제공합니다."
+          "text": "**Playwright Worker**가 DOM, 경로, 접근성 정보, 클릭·입력 가능한 요소를 분석해 사용자가 실제로 이용할 수 있는 기능 흐름으로 정리합니다. 이후 AI가 작성한 테스트 절차를 실제 브라우저에서 검증하고, **스크린샷·영상·실행 로그**를 실시간 증적으로 제공합니다. 분석, 생성, 실행은 **작업 큐 기반 비동기 파이프라인**으로 처리했습니다."
         },
         {
           "type": "heading",
@@ -446,18 +446,18 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Playwright / Backend",
           "items": [
-            "웹 분석 크롤 엔진 개발",
-            "QA 실행 엔진 개발",
-            "실시간 증적 전달",
+            "**웹 분석 크롤 엔진** 개발",
+            "**QA 실행 엔진** 개발",
+            "**실시간 증적 전달** 구조 구현",
             "AI 입력 및 학습 데이터 연계"
           ]
         },
         {
           "role": "DevOps",
           "items": [
-            "AWS 기반 비동기 파이프라인 설계",
-            "Terraform 기반 인프라 코드화",
-            "Jenkins CI/CD 구축",
+            "**AWS 기반 비동기 파이프라인** 설계",
+            "**Terraform 기반 인프라 코드화**",
+            "**Jenkins CI/CD** 구축",
             "예열용 ECS Worker 및 Shell Script 구현"
           ]
         }
@@ -479,13 +479,14 @@ window.PORTFOLIO_DATA = {
         "alt": "Re:Flow logo",
         "noPad": true
       },
-      "overview": "기부, 분배, 소비, 정산 흐름을 온체인에 기록하고 AI 기반 FDS로 이상 거래를 탐지하는 블록체인 기반 투명 기부 플랫폼입니다.",
+      "overview": "기부, 분배, 소비, 정산 흐름을 온체인에 기록하고 AI 기반 FDS로 이상 거래를 탐지하는 **블록체인 기반 투명 기부 플랫폼**입니다.",
       "process": [
         "KRW 결제",
         "RLF 민팅",
         "지역 풀 기부",
         "분배 확정",
-        "소비/정산/소각"
+        "수혜자 소비",
+        "정산 및 소각"
       ],
       "tech": [
         "Spring Boot",
@@ -508,33 +509,34 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "BlockchainManagerService 설계 및 구현",
-        "Web3j 기반 Spring Boot와 Hardhat/테스트넷 RPC 연동",
-        "수탁형 지갑 모델과 서버 대리 서명 구조 설계",
-        "DonationToken 및 DonationPlatform 컨트랙트 설계",
-        "Traefik, Docker Compose, Jenkins 기반 배포 구조화"
+        "**BlockchainManagerService** 설계 및 REST API 연결",
+        "**Web3j 기반 Spring Boot ↔ Hardhat/RPC 연동**",
+        "**수탁형 지갑 방식** 채택 및 트랜잭션 대행 서명",
+        "**DonationToken / DonationPlatform 컨트랙트** 설계",
+        "**Traefik 리버스 프록시**와 TLS 자동 발급 구성",
+        "Docker Compose 환경 분리 및 Jenkins 배포 자동화"
       ],
       "troubleshooting": [
         {
           "title": "대규모 수혜자 분배 시 Gas Limit 초과 문제",
           "summary": "분배 과정을 collectRegionFunds, distributeChunk, finalizeDistribution 단계로 나누어 처리했습니다.",
-          "problem": "수혜자 수가 늘어날수록 단일 distributeAll 트랜잭션의 가스 비용이 블록 gas limit을 초과할 수 있었습니다.",
-          "solution": "분배를 collectRegionFunds, distributeChunk, finalizeDistribution 단계로 나누고 백엔드가 청크 크기를 조절하며 반복 호출하도록 설계했습니다.",
-          "lesson": "블록체인에서는 비즈니스 로직뿐 아니라 실행 비용과 트랜잭션 한계를 함께 고려해야 합니다."
+          "problem": "수혜자 수가 증가할수록 단일 **distributeAll 트랜잭션**의 가스 비용이 블록 gas limit을 초과하여 트랜잭션이 실패했고, 수혜자 규모에 따라 **분배 자체가 불가능한 상태**가 발생했습니다.",
+          "solution": "분배 로직을 **collectRegionFunds(잠금) → distributeChunk(청크 반복) → finalizeDistribution(완료)** 3단계로 분리하고, 백엔드가 청크 크기를 조절하며 반복 호출하는 방식으로 임의의 수혜자 수를 처리할 수 있도록 설계했습니다. Web3j의 트랜잭션 **receipt 폴링**으로 각 청크 완료 여부를 확인한 뒤 다음 단계를 진행했습니다.",
+          "lesson": "블록체인은 **단일 트랜잭션의 연산량에 상한**이 있습니다. 대용량 처리 로직은 처음부터 **청크 분할과 단계별 상태 추적**을 고려해 설계해야 임의의 규모에서도 안정적으로 동작한다는 것을 실감했습니다."
         },
         {
           "title": "Docker 컨테이너 기동 순서 문제",
-          "summary": "Hardhat 노드의 JSON-RPC 응답을 폴링해 실제 준비 상태 이후 배포를 진행했습니다.",
-          "problem": "Hardhat 노드 컨테이너가 준비되기 전에 컨트랙트 배포 스크립트가 실행되면 배포가 실패했습니다.",
-          "solution": "eth_blockNumber JSON-RPC를 폴링해 노드가 응답할 때까지 배포 스크립트 실행을 지연시켰습니다.",
-          "lesson": "컨테이너 시작과 서비스 준비는 다르며 실제 레디니스 확인이 필요합니다."
+          "summary": "Hardhat 노드의 JSON-RPC 응답을 폴링해 실제 준비 상태 이후 컨트랙트 배포를 진행했습니다.",
+          "problem": "Hardhat 노드 컨테이너가 완전히 준비되기 전에 컨트랙트 배포 스크립트가 실행되어 **RPC 연결 실패**로 배포가 중단됐습니다. Docker Compose의 **depends_on만으로는 실제 서비스 준비 상태를 보장할 수 없었습니다**.",
+          "solution": "start.sh에서 **eth_blockNumber JSON-RPC를 wget으로 폴링**하여 Hardhat 노드가 응답을 반환할 때까지 배포 스크립트 실행을 지연시켰습니다. 노드 레디니스가 확인된 후에만 deploy.js를 실행해 배포 순서를 보장했습니다.",
+          "lesson": "Docker Compose의 depends_on은 컨테이너 시작만 보장할 뿐 **서비스 준비 여부는 보장하지 않습니다**. 실제 서비스 레디니스는 헬스체크 폴링으로 직접 확인해야 한다는 것을 배웠습니다."
         },
         {
           "title": "배포 후 컨트랙트 주소 수동 복붙 문제",
           "summary": "deploy.js에서 배포 결과를 읽어 백엔드와 프론트엔드 환경 파일을 자동 갱신했습니다.",
-          "problem": "컨트랙트를 새로 배포할 때마다 백엔드와 프론트엔드 환경 변수를 수동 수정해야 했습니다.",
-          "solution": "deploy.js가 배포 완료 즉시 환경 파일을 파싱해 컨트랙트 주소를 자동 업데이트하도록 구현했습니다.",
-          "lesson": "반복되는 배포 후처리는 자동화해야 실수를 줄이고 재현성을 높일 수 있습니다."
+          "problem": "스마트 컨트랙트를 수정·재배포할 때마다 백엔드·프론트엔드 .env 파일에 컨트랙트 주소를 수동으로 복사해야 했고, 팀원 간 주소 불일치로 **트랜잭션 실패가 반복**됐습니다.",
+          "solution": "deploy.js가 배포 완료 즉시 backend/.env와 frontend/.env를 Node.js fs로 파싱하여 컨트랙트 주소를 **정규식 치환으로 자동 업데이트**하도록 구현했습니다. Docker 볼륨 마운트로 컨테이너 내 배포 시에도 호스트 파일이 갱신되도록 설정했습니다.",
+          "lesson": "반복되는 수동 설정 작업은 실수의 온상입니다. 배포 스크립트가 환경 설정까지 자동으로 갱신하도록 자동화 범위를 넓히면 **팀 전체의 개발 사이클 신뢰도**가 높아진다는 것을 체감했습니다."
         }
       ],
       "printTheme": "theme-reflow",
@@ -545,7 +547,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "블록체인 기반 투명 기부 플랫폼입니다. 기부 → 분배 → 소비 → 정산 전체 흐름을 온체인에 기록하며, AI 기반 FDS(Fraud Detection System)가 이상 거래를 탐지합니다."
+          "text": "**블록체인 기반 투명 기부 플랫폼**입니다. 기부 → 분배 → 소비 → 정산 전체 흐름을 온체인에 기록하고, AI 기반 FDS(Fraud Detection System)가 이상 거래를 탐지하도록 구성했습니다."
         },
         {
           "type": "heading",
@@ -553,7 +555,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "KRW 결제 → RLF(ERC20) 민팅 → 지역 풀 기부 → 관리자 확정 → 월말 분배/이월 → 수혜자 소비 → 가맹점 정산 후 토큰 소각으로 이어지는 토큰 순환 구조가 핵심입니다. Spring Batch + Quartz 스케줄러가 월 1회 FastAPI FDS 서버에 배치 요청을 보내고, DQN 모델이 17개 피처를 기반으로 이상 거래를 탐지합니다."
+          "text": "**KRW 결제 → RLF(ERC20) 민팅 → 지역 풀 기부 → 관리자 확정 → 월말 분배/이월 → 수혜자 소비 → 가맹점 정산 후 토큰 소각**으로 이어지는 토큰 순환 구조가 핵심입니다. Spring Batch + Quartz 스케줄러가 월 1회 FastAPI FDS 서버에 배치 요청을 보내고, DQN 모델이 17개 피처를 기반으로 이상 거래를 탐지합니다."
         },
         {
           "type": "heading",
@@ -598,18 +600,19 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Backend / Blockchain",
           "items": [
-            "BlockchainManagerService 설계 및 구현",
-            "Web3j 기반 컨트랙트 API 연동",
-            "수탁형 지갑 모델 설계",
-            "DonationToken 및 DonationPlatform 컨트랙트 설계"
+            "**BlockchainManagerService** 설계 및 구현 - 컨트랙트 기능을 REST API로 연결",
+            "**Web3j 기반 Spring Boot ↔ Hardhat/RPC 연동**",
+            "**수탁형 지갑 방식** 채택 - 서버가 어드민 지갑으로 트랜잭션 대행 서명",
+            "**DonationToken.sol / DonationPlatform.sol** 컨트랙트 설계 및 배포"
           ]
         },
         {
           "role": "DevOps",
           "items": [
-            "Traefik 라우팅 구성",
-            "Docker Compose 기반 운영 환경 구성",
-            "Jenkins 배포 자동화"
+            "**Traefik 리버스 프록시** 구성 - 단일 도메인 멀티 서비스 라우팅과 TLS 자동 발급",
+            "**Docker Compose 환경 분리** - 로컬 인프라 / 서버 인프라 / 애플리케이션 컨테이너 독립 관리",
+            "**Jenkins CI/CD 파이프라인** 구축 - 빌드, 배포, 헬스체크 자동화",
+            "Dozzle, Redis Commander 등 운영 관측 도구 통합"
           ]
         }
       ]
@@ -629,13 +632,13 @@ window.PORTFOLIO_DATA = {
         "alt": "A-601 visual",
         "noPad": true
       },
-      "overview": "WebSocket 기반 게임 엔진과 LiveKit WebRTC 음성 통화를 결합해 실시간 SF 마피아 게임을 구현했습니다.",
+      "overview": "**WebSocket 기반 게임 엔진**과 **LiveKit WebRTC 음성 통화**를 결합해 AI 판사 기반 실시간 SF 마피아 게임을 구현했습니다.",
       "process": [
-        "방 입장",
-        "페이즈 타이머",
-        "WebRTC 권한 제어",
-        "AI 판사",
-        "특수 능력"
+        "WebSocket 연결",
+        "페이즈 상태 동기화",
+        "LiveKit 권한 제어",
+        "AI 판결 연동",
+        "특수 능력 이벤트 처리"
       ],
       "tech": [
         "Spring Boot",
@@ -659,27 +662,27 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "백엔드 아키텍처 가이드 및 코드 리뷰 리딩",
-        "LiveKit 기반 WebRTC 권한 제어 구현",
-        "WebSocket 기반 실시간 게임 엔진 설계/구현",
+        "**백엔드 아키텍처 가이드 및 코드 리뷰 리딩**",
+        "**LiveKit 기반 WebRTC 권한 제어** 구현",
+        "**WebSocket 기반 실시간 게임 엔진** 설계/구현",
+        "Redis 기반 게임 상태 관리와 분산 락 활용",
         "Docker Compose 기반 개발·운영 인프라 구성",
-        "GitLab + Jenkins CI/CD 구축 및 배포 자동화",
-        "서버 네트워크 / 도메인 / TLS 인증 구성"
+        "GitLab + Jenkins CI/CD 구축 및 배포 자동화"
       ],
       "troubleshooting": [
         {
           "title": "SockJS 멀티 HTTP 요청 시 Principal 유실",
           "summary": "CONNECT 처리 시 세션 속성에도 userId를 저장하고, SUBSCRIBE/SEND 처리 시 Principal이 없으면 세션 값으로 복원했습니다.",
-          "problem": "SockJS의 여러 HTTP 요청에서 STOMP CONNECT 이후 SUBSCRIBE/SEND 프레임의 accessor.getUser()가 null이 되는 현상이 발생했습니다.",
-          "solution": "CONNECT 처리 시 세션 속성에도 userId를 저장하고, SUBSCRIBE/SEND 처리 시 Principal이 없으면 세션 값으로 복원했습니다.",
-          "lesson": "실시간 연결에서는 최초 인증 정보가 이후 메시지 흐름에서도 복원 가능하도록 설계해야 합니다."
+          "problem": "SockJS는 WebSocket 연결 전후로 여러 HTTP 요청을 사용하기 때문에 STOMP CONNECT 이후 SUBSCRIBE/SEND 프레임에서 **accessor.getUser()가 null**이 되는 현상이 발생했습니다.",
+          "solution": "CONNECT 처리 시 `accessor.getSessionAttributes()`에 userId를 함께 저장하고, SUBSCRIBE/SEND 처리에서 Principal이 없으면 **세션 속성으로 사용자 식별값을 복원**하도록 방어 로직을 추가했습니다.",
+          "lesson": "실시간 연결에서는 최초 인증 정보가 이후 메시지 흐름에서도 복원 가능해야 합니다. 특히 SockJS처럼 요청이 분리되는 환경에서는 **Principal과 세션 속성을 함께 고려**해야 한다는 점을 배웠습니다."
         },
         {
           "title": "특수 능력 구현 - 밀항자 발포 이벤트",
           "summary": "발포 조건을 서버에서 검증하고 공통 사망 처리와 6초 지연 밤 전환 태스크를 연결했습니다. ScheduledFuture 참조를 방 단위로 저장해 게임 종료나 페이즈 변경 시 취소할 수 있게 했습니다.",
-          "problem": "밀항자가 낮 페이즈에 총을 발사하면 대상 사망, 낮 타이머 종료, 6초 지연 후 밤 전환이 충돌 없이 이어져야 했습니다.",
-          "solution": "발포 조건을 서버에서 검증하고 공통 사망 처리와 6초 지연 밤 전환 태스크를 연결했습니다. ScheduledFuture 참조를 방 단위로 저장해 게임 종료나 페이즈 변경 시 취소할 수 있게 했습니다.",
-          "lesson": "실시간 게임의 특수 능력은 단순 기능 추가가 아니라 타이머, 상태 저장소, 브로드캐스트, 승패 판정 흐름을 함께 다루는 이벤트라는 점을 배웠습니다."
+          "problem": "밀항자가 낮 페이즈에 총을 발사하면 **대상 즉시 사망, 기존 낮 타이머 종료, 6초 지연 후 밤 전환**이 충돌 없이 이어져야 했습니다. 단순히 생존 상태만 바꾸면 기존 타이머와 브로드캐스트가 중복 실행되는 문제가 발생할 수 있었습니다.",
+          "solution": "발포 조건을 서버에서 검증하고 공통 사망 처리로 연결했습니다. 이후 기존 페이즈 타이머와 충돌하지 않도록 **TaskScheduler로 6초 후 밤 전환 태스크**를 예약하고, ScheduledFuture 참조를 방 단위로 저장해 게임 종료 또는 페이즈 변경 시 취소할 수 있게 했습니다.",
+          "lesson": "실시간 게임의 특수 능력은 단순 기능 추가가 아니라 **타이머, 상태 저장소, 브로드캐스트, 승패 판정 흐름을 모두 건드리는 이벤트**입니다. 역할별 예외도 공통 사망 처리와 페이즈 전환 규칙 안으로 흡수해야 경쟁 조건을 줄일 수 있습니다."
         },
         {
           "title": "LiveKit 음성이 밤 페이즈에서 차단되지 않는 현상",
@@ -704,7 +707,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "AI 판사 기반 몰입형 SF 서바이벌 마피아 게임 프로젝트입니다."
+          "text": "**AI 판사 기반 몰입형 SF 서바이벌 마피아 게임** 프로젝트입니다. 플레이어는 WebSocket으로 게임 상태를 동기화하고, LiveKit WebRTC로 실시간 음성 통화를 진행하며, AI 판사가 변론 내용을 기반으로 판결을 내리는 구조입니다."
         },
         {
           "type": "heading",
@@ -712,7 +715,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "WebRTC를 활용한 화상 채팅과 WebSocket 기반 이벤트 처리, 게임 룸 매니저, 상태 동기화와 기존 마피아 게임에 AI 판사 시스템을 이용한 판결이 핵심입니다."
+          "text": "**WebRTC 음성 연결, WebSocket 이벤트 엔진, 게임 룸 매니저, Redis 상태 동기화, AI 판결 흐름**이 핵심입니다. 페이즈 전환과 특수 능력 이벤트가 동시에 발생할 수 있어, 서버 타이머와 브로드캐스트 흐름을 일관되게 관리하는 데 집중했습니다."
         },
         {
           "type": "heading",
@@ -756,16 +759,17 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Backend",
           "items": [
-            "백엔드 아키텍처 가이드 및 코드 리뷰 리딩",
-            "LiveKit 기반 WebRTC 권한 제어 구현",
-            "WebSocket 기반 실시간 게임 엔진 설계/구현"
+            "**백엔드 아키텍처 가이드 및 코드 리뷰 리딩**",
+            "**LiveKit 기반 WebRTC 권한 제어** 구현",
+            "**WebSocket 기반 실시간 게임 엔진** 설계/구현",
+            "Redis 기반 게임 상태 관리 및 분산 락 활용"
           ]
         },
         {
           "role": "DevOps",
           "items": [
-            "Docker Compose 기반 개발·운영 인프라 구성",
-            "GitLab + Jenkins CI/CD 구축 및 배포 자동화",
+            "**Docker Compose 기반 개발·운영 인프라** 구성",
+            "**GitLab + Jenkins CI/CD** 구축 및 배포 자동화",
             "서버 네트워크 / 도메인 / TLS 인증 구성"
           ]
         }
@@ -786,13 +790,13 @@ window.PORTFOLIO_DATA = {
         "alt": "Newstagram logo",
         "noPad": true
       },
-      "overview": "사용자의 활동 로그를 분석하여 RSS 뉴스 피드를 선별 제공하고, pgVector 기반 의미 검색으로 개인화된 기사를 추천하는 지능형 뉴스 서비스입니다.",
+      "overview": "사용자 활동 로그와 RSS 뉴스 피드를 기반으로 개인화된 기사를 추천하고, **pgVector 의미 검색**으로 사용자 문장 기반 뉴스 탐색을 제공하는 지능형 뉴스 서비스입니다.",
       "process": [
         "RSS 수집·정제",
-        "사용자 활동 분석",
-        "문장 기반 검색",
+        "사용자 로그 분석",
         "pgVector 의미 검색",
-        "개인화 추천"
+        "개인화 추천",
+        "운영 모니터링"
       ],
       "tech": [
         "Spring Boot",
@@ -811,10 +815,11 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "사용자 문장 기반 벡터 기사 검색 파이프라인 구축",
+        "**사용자 문장 기반 벡터 기사 검색 파이프라인** 구축",
+        "**공통 도메인 모듈 분리**로 MSA 중복 제거",
         "Docker 기반 개발 환경 통합 및 초기 가이드 수립",
-        "GitHub Actions 기반 CI/CD 구축",
-        "AWS 기반 MSA 환경 구축 및 모니터링 체계 설계"
+        "**GitHub Actions 기반 CI/CD** 구축",
+        "**AWS 기반 MSA 환경 구축 및 모니터링 체계** 설계"
       ],
       "troubleshooting": [
         {
@@ -854,7 +859,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "Newstagram은 사용자의 활동 로그를 분석하여 RSS 뉴스 피드를 선별 제공하고, 개인화된 기사를 추천하는 지능형 뉴스 서비스입니다."
+          "text": "Newstagram은 사용자의 활동 로그를 분석하여 RSS 뉴스 피드를 선별 제공하고, **개인화된 기사 추천**과 **사용자 문장 기반 의미 검색**을 제공하는 지능형 뉴스 서비스입니다."
         },
         {
           "type": "heading",
@@ -862,7 +867,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "RSS 뉴스 수집·정제, 핫 이슈 뉴스 피드, 개인 맞춤 뉴스 피드, 사용자 문장을 통한 나만의 뉴스 피드 제공이 핵심입니다."
+          "text": "**RSS 뉴스 수집·정제, 핫 이슈 뉴스 피드, 개인 맞춤 뉴스 피드, 사용자 문장을 통한 나만의 뉴스 피드**가 핵심입니다. pgVector 기반 의미 검색과 캐싱 전략을 조합해 검색 품질과 응답 속도 사이의 균형을 맞췄습니다."
         },
         {
           "type": "heading",
@@ -904,15 +909,17 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Backend",
           "items": [
-            "사용자 문장 기반 벡터 기사 검색 파이프라인 구축"
+            "**사용자 문장 기반 벡터 기사 검색 파이프라인** 구축",
+            "**Komoran + OpenAI 임베딩 + pgVector** 기반 하이브리드 검색 구성",
+            "**공통 도메인 모듈 분리**로 MSA 엔티티 중복 제거"
           ]
         },
         {
           "role": "DevOps",
           "items": [
-            "Docker 기반 개발 환경 통합 및 초기 가이드 수립",
-            "GitHub Actions 기반 CI/CD 구축",
-            "AWS 기반 MSA 환경 구축 및 모니터링 체계 설계"
+            "**Docker 기반 개발 환경 통합** 및 초기 가이드 수립",
+            "**GitHub Actions 기반 CI/CD** 구축",
+            "**AWS 기반 MSA 환경 구축 및 CloudWatch 모니터링 체계** 설계"
           ]
         }
       ]
@@ -932,13 +939,13 @@ window.PORTFOLIO_DATA = {
         "alt": "Lime logo",
         "noPad": true
       },
-      "overview": "Lime (Live In Media Encoder)은 다양한 동영상 업로드 및 라이브 스트리밍 서비스를 제공하는 웹 기반 미디어 플랫폼입니다.",
+      "overview": "동영상 업로드, VOD 재생, 라이브 스트리밍, 실시간 채팅을 제공하는 **웹 기반 미디어 플랫폼**입니다.",
       "process": [
         "동영상 업로드",
         "HLS VOD 스트리밍",
-        "WebRTC 라이브",
+        "WebRTC 라이브 방송",
         "WebSocket 채팅",
-        "JWT 인증"
+        "Azure 배포"
       ],
       "tech": [
         "Spring Boot",
@@ -955,10 +962,10 @@ window.PORTFOLIO_DATA = {
         }
       ],
       "contributions": [
-        "Azure 기반 인프라 설계 및 클라우드 환경 구축",
-        "WebSocket 기반 실시간 채팅 시스템 구현",
-        "JWT 기반 사용자 인증 및 REST API 개발",
-        "프로젝트 리딩 및 일정 관리"
+        "**Azure 기반 인프라 설계 및 클라우드 환경 구축**",
+        "**WebSocket 기반 실시간 채팅 시스템** 구현",
+        "**JWT 기반 사용자 인증 및 REST API** 개발",
+        "**프로젝트 리딩 및 일정 관리**"
       ],
       "troubleshooting": [
         {
@@ -991,7 +998,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "Lime (Live In Media Encoder)은 다양한 동영상 업로드 및 라이브 스트리밍 서비스를 제공하는 웹 기반 미디어 플랫폼입니다."
+          "text": "Lime(Live In Media Encoder)은 다양한 동영상 업로드와 라이브 스트리밍을 제공하는 **웹 기반 미디어 플랫폼**입니다. 업로드부터 인코딩, 재생, 실시간 소통까지 미디어 서비스 흐름을 직접 경험한 프로젝트입니다."
         },
         {
           "type": "heading",
@@ -999,7 +1006,7 @@ window.PORTFOLIO_DATA = {
         },
         {
           "type": "paragraph",
-          "text": "HLS 기반 VOD 스트리밍과 WebRTC 기반 실시간 방송 기능을 모두 구현한 하이브리드 미디어 플랫폼입니다."
+          "text": "**HLS 기반 VOD 스트리밍**과 **WebRTC 기반 실시간 방송**을 모두 구현한 하이브리드 미디어 플랫폼입니다. 사용자 인증, 실시간 채팅, Azure 기반 배포 환경을 함께 구성하며 서비스 전체 흐름을 학습했습니다."
         },
         {
           "type": "heading",
@@ -1041,15 +1048,16 @@ window.PORTFOLIO_DATA = {
         {
           "role": "Backend",
           "items": [
-            "Azure 기반 인프라 설계 및 클라우드 환경 구축",
-            "WebSocket 기반 실시간 채팅 시스템 구현",
-            "JWT 기반 사용자 인증 및 REST API 개발"
+            "**Azure 기반 인프라 설계 및 클라우드 환경 구축**",
+            "**WebSocket 기반 실시간 채팅 시스템** 구현",
+            "**JWT 기반 사용자 인증 및 REST API** 개발"
           ]
         },
         {
           "role": "PM",
           "items": [
-            "프로젝트 리딩 및 일정 관리"
+            "**프로젝트 리딩 및 일정 관리**",
+            "팀원별 역할 조율과 주간 이슈 공유 체계 운영"
           ]
         }
       ]

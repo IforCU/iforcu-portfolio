@@ -74,7 +74,7 @@ function renderAboutSection(profile) {
         el("img", { src: profile.photo, alt: "Profile photo" }),
       ]),
       el("div", { className: "intro-text" }, [
-        el("p", { className: "big" }, profile.webIntro),
+        el("p", { className: "big" }, renderInlineText(profile.webIntro)),
         renderTechStack(profile.techStack),
         renderCertifications(profile.certifications),
       ]),
