@@ -1,977 +1,599 @@
 :root {
   --bg: #f7fff9;
   --panel: #ffffff;
+  --panel-soft: rgba(47, 166, 115, 0.035);
   --green-500: #2fa673;
   --green-700: #1f7a55;
-  --muted: #6b6f6a;
-  --sidebar-width: 260px;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --line: rgba(15, 23, 42, 0.08);
+  --shadow: 0 16px 42px rgba(15, 23, 42, 0.06);
+  --readable-line: 1.7;
 }
-/* BMJUA font removed — site uses system / Inter stack again */
+
 * {
   box-sizing: border-box;
-  :root {
-    --bg: #f7fff9;
-    --panel: #ffffff;
-    --green-500: #2fa673;
-    --green-700: #1f7a55;
-    --muted: #6b6f6a;
-  }
-  * {
-    box-sizing: border-box;
-  }
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: 'Noto Sans KR', Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    font-size: 16px; /* reduced base font size for denser layout */
-    color: #0b0b0b;
-    background: var(--bg);
-  }
-
-  /* Top navigation */
-  .topbar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    background: var(--panel);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    z-index: 1200;
-  }
-  .topbar-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 20px;
-    gap: 12px;
-  }
-  .topbar .logo {
-    font-size: 18px;
-    color: var(--green-700);
-    margin: 0;
-  }
-  .topbar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 10px;
-  }
-  .topbar nav a {
-    display: inline-block;
-    padding: 8px 10px;
-    border-radius: 8px;
-    color: var(--green-700);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  .topbar nav a.active {
-    background: var(--green-500);
-    color: #fff;
-  }
-  .topbar .social {
-    display: flex;
-    gap: 10px;
-  }
-
-  .topbar .social img.icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-  }
-
-  /* toast */
-  .toast {
-    position: fixed;
-    left: 50%;
-    bottom: 28px;
-    transform: translateX(-50%) translateY(8px);
-    background: var(--green-700);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-weight: 600;
-    opacity: 0;
-    transition: all 0.28s ease;
-    z-index: 1600;
-  }
-  .toast.visible {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .content {
-    padding: 100px 20px 40px;
-    max-width: 980px;
-    margin: 0 auto;
-  }
-  .section {
-    padding: 48px 0;
-  }
-  .intro .intro-inner {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .intro .intro-text {
-    flex: 1;
-    min-width: 300px; /* Ensure it doesn't get too small on mobile before wrapping */
-    word-break: keep-all; /* Korean word wrapping style */
-    overflow-wrap: break-word;
-  }
-  /* Quote detail toggle */
-  /* Quote detail: always expanded and no toggle UI */
-  .work-content .quote > strong {
-    cursor: default;
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 600;
-    color: #0b0b0b;
-  }
-  .work-content .quote .quote-detail {
-    display: block;
-    margin-top: 8px;
-  }
-
-  /* Show quote-detail muted as normal black text */
-  .work-content .quote .quote-detail.muted {
-    color: #0b0b0b;
-    font-weight: 400;
-    font-size: 16px;
-    display: block;
-    margin-top: 8px;
-  }
-
-  /* Rendered markdown-like lists inside quote-detail.muted */
-  .quote-detail.muted ul {
-    margin: 6px 0 0 18px;
-    padding-left: 18px;
-    list-style: disc;
-  }
-  .quote-detail.muted ul ul {
-    margin-top: 4px;
-    margin-left: 12px;
-    padding-left: 12px;
-    list-style-type: circle;
-  }
-  .quote-detail.muted li {
-    margin: 4px 0;
-  }
-  /* Hide expand/collapse chevrons injected via pseudo-elements */
-  .work-content .quote > strong::after {
-    display: none !important;
-    content: "" !important;
-  }
-  .photo img {
-    width: 240px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 6px solid rgba(47, 166, 115, 0.06);
-  }
-  .big {
-    font-size: 34px;
-    margin: 0;
-    color: var(--green-700);
-    font-weight: 700;
-  }
-  .muted {
-    color: var(--muted);
-    margin-top: 8px;
-  }
-  .values h3 {
-    margin: 18px 0 8px 0;
-    color: var(--green-500);
-  }
-  .project-list .project {
-    margin-top: 18px;
-  }
-  .project-detail .project-logo {
-    width: 220px;
-    height: auto;
-    display: block;
-    margin: 8px 0 12px;
-    border-radius: 8px;
-  }
-
-  /* Work / Experience layout */
-  .work-divider {
-    height: 1px;
-    background: rgba(0, 0, 0, 0.06);
-    margin: 12px 0 32px;
-  }
-  .work-list {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-  .work-entry {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .work-meta {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
-  .work-meta img {
-    width: 96px;
-    height: 96px;
-    object-fit: contain;
-    padding: 8px;
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  .work-meta img.no-pad {
-    padding: 0;
-    background: transparent;
-    border: none;
-    display: block;
-    width: 96px;
-    height: 96px;
-    object-fit: cover;
-  }
-
-  /* Small icon links placed in the meta (left) column */
-  .meta-links {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-  }
-  .meta-link {
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--panel);
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--green-700);
-  }
-  .meta-link img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    display: block;
-  }
-
-  @media (max-width: 900px) {
-    .meta-links {
-      gap: 6px;
-    }
-    .meta-link {
-      width: 30px;
-      height: 30px;
-    }
-    .meta-link img {
-      width: 14px;
-      height: 14px;
-    }
-  }
-  .work-meta .info h3 {
-    margin: 0;
-    font-size: 18px;
-    color: var(--green-700);
-  }
-  .work-meta .info span {
-    display: block;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  .work-content {
-    padding-top: 6px;
-  }
-
-  /* Quote-style paragraphs inside work-content */
-  .work-content p {
-    border-left: 4px solid rgba(47, 166, 115, 0.12);
-    background: rgba(47, 166, 115, 0.03);
-    padding: 10px 14px;
-    margin: 10px 0;
-    border-radius: 6px;
-  }
-  .work-content p.muted {
-    background: transparent;
-    border-left-color: rgba(0, 0, 0, 0.06);
-    color: var(--muted);
-    padding-left: 12px;
-    margin: 6px 0;
-  }
-
-  /* Project link buttons */
-  .project-links {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-    flex-wrap: wrap;
-  }
-  .link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 10px;
-    background: var(--panel);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--green-700);
-    font-weight: 700;
-    font-size: 14px;
-  }
-  .link-btn img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    display: inline-block;
-  }
-
-  /* Ensure linked images scale down from large source files */
-  .meta-link,
-  .link-btn {
-    overflow: hidden;
-  }
-  .meta-link img,
-  .link-btn img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-  }
-
-  /* Inline small meta-links placed next to project title inside .info */
-  .work-meta .info .meta-links {
-    display: inline-flex;
-    gap: 8px;
-    margin-left: 8px;
-    vertical-align: middle;
-  }
-  .work-meta .info .meta-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    background: var(--panel);
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-  }
-  .work-meta .info .meta-link img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    display: block;
-  }
-
-  @media (min-width: 900px) {
-    .work-entry {
-      flex-direction: row;
-      align-items: flex-start;
-    }
-    .work-meta {
-      flex: 0 0 220px;
-      flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-    }
-    .work-meta.sticky {
-      position: sticky;
-      top: 96px;
-    }
-    .work-content {
-      flex: 1;
-      padding-left: 20px;
-      border-left: 1px solid rgba(0, 0, 0, 0.04);
-    }
-  }
-  h2 {
-    font-size: 28px;
-    color: var(--green-700);
-    margin: 0 0 12px 0;
-  }
-  ul {
-    padding-left: 18px;
-  }
-  li {
-    margin: 8px 0;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .topbar-inner {
-      padding: 12px 14px;
-    }
-    .topbar nav ul {
-      gap: 8px;
-      overflow: auto;
-    }
-    .photo img {
-      width: 160px;
-      height: 160px;
-    }
-    .content {
-      padding: 90px 16px;
-    }
-  }
-
-  /* Small helper classes */
-  .emphasis {
-    font-size: 20px;
-    color: var(--green-700);
-    font-weight: 700;
-  }
-  .muted-text {
-    color: var(--muted);
-    font-style: italic;
-  }
-  .muted-small {
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  /* Tech stack badges in About */
-  .tech-stack {
-    margin-top: 18px;
-  }
-  .tech-stack h3 {
-    margin: 8px 0;
-    color: var(--green-500);
-    font-size: 16px;
-  }
-  .tech-badges {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-  .tech-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 10px;
-    background: var(--panel);
-    border: 1px solid rgba(0,0,0,0.06);
-    color: var(--green-700);
-    font-weight: 700;
-    font-size: 12px;
-    border-radius: 999px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-  }
-
-  /* Certification badges (compact) */
-  .certs-inline {
-    margin-top: 12px;
-  }
-  .certs-inline h3 {
-    margin: 6px 0;
-    color: var(--green-500);
-    font-size: 16px;
-  }
-  .cert-badges {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-  .cert-badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px 10px;
-    background: rgba(0,0,0,0.02);
-    border: 1px solid rgba(0,0,0,0.04);
-    color: var(--muted);
-    font-weight: 600;
-    font-size: 13px;
-    border-radius: 999px;
-  }
-
-  /* Footer */
-  .site-footer {
-    background: rgba(47, 166, 115, 0.04);
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    padding: 20px 0;
-    margin-top: 36px;
-  }
-  .site-footer .content {
-    max-width: 980px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-  .site-footer .muted {
-    margin: 0;
-  }
-  .site-footer .footer-links a {
-    color: var(--green-700);
-    text-decoration: none;
-    font-weight: 600;
-  }
-  @media (max-width: 600px) {
-    .site-footer .content {
-      flex-direction: column;
-      gap: 8px;
-      text-align: center;
-    }
-  }
-  /* Project images (overview / architecture) */
-  .project-logo {
-    display: block;
-    width: 100%;
-    max-width: 880px;
-    height: auto;
-    margin: 12px auto;
-    border-radius: 8px;
-    background: #fff;
-    padding: 6px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-    object-fit: contain;
-  }
-  @media (max-width: 900px) {
-    .project-logo {
-      max-width: 100%;
-      padding: 4px;
-    }
-  }
 }
 
-/* 화면에서 인쇄용 URL 텍스트 숨기기 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans KR", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: var(--readable-line);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+strong {
+  font-weight: 800;
+}
+
+.topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1200;
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+
+.topbar-inner {
+  width: min(1100px, calc(100% - 40px));
+  min-height: 68px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  margin: 0;
+  color: var(--green-700);
+  font-size: 18px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.topbar nav {
+  flex: 1;
+}
+
+.topbar ul {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topbar nav a,
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--green-700);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.topbar nav a.active,
+.topbar nav a:hover,
+.social a:hover {
+  background: var(--green-500);
+  color: #ffffff;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social img.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  width: min(980px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+main.content {
+  padding-top: 100px;
+}
+
+.section {
+  padding: 48px 0;
+}
+
+.section h2,
+h2 {
+  margin: 0 0 12px;
+  color: var(--green-700);
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.work-divider {
+  height: 1px;
+  margin: 12px 0 32px;
+  background: rgba(15, 23, 42, 0.08);
+}
+
+.intro-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+}
+
+.photo {
+  flex: 0 0 auto;
+}
+
+.photo img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  object-position: center top;
+  border: 6px solid rgba(47, 166, 115, 0.06);
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.intro-text {
+  flex: 1 1 360px;
+  min-width: 0;
+}
+
+.big {
+  margin: 0;
+  color: var(--green-700);
+  font-size: clamp(28px, 4.4vw, 36px);
+  font-weight: 800;
+  line-height: var(--readable-line);
+  letter-spacing: -0.04em;
+}
+
+.tech-stack,
+.certs-inline {
+  margin-top: 18px;
+}
+
+.tech-stack h3,
+.certs-inline h3,
+.values h3 {
+  margin: 8px 0;
+  color: var(--green-500);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.tech-badges,
+.cert-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.tech-badge,
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 31px;
+  padding: 5px 11px;
+  border: 1px solid rgba(15, 23, 42, 0.07);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--green-700);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.cert-badge {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.values {
+  flex: 1 1 100%;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.values ul,
+.detail-list {
+  margin: 0 0 24px;
+  padding-left: 20px;
+}
+
+.values li,
+.detail-list li {
+  margin: 8px 0;
+  color: #263141;
+  line-height: var(--readable-line);
+}
+
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.work-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.work-meta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.work-meta img {
+  width: 96px;
+  height: 96px;
+  padding: 8px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.work-meta img.no-pad {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  object-fit: cover;
+}
+
+.work-meta .info h3 {
+  margin: 0;
+  color: var(--green-700);
+  font-size: 19px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.work-meta .info span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: var(--readable-line);
+}
+
+.meta-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.meta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--green-700);
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.meta-link img {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  object-fit: contain;
+}
+
 .print-url {
   display: none;
 }
 
-/* ===== PDF 저장 플로팅 버튼 ===== */
+.work-content {
+  padding-top: 6px;
+}
+
+.work-content h3 {
+  margin: 26px 0 10px;
+  color: var(--green-700);
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.work-content h3:first-child {
+  margin-top: 0;
+}
+
+.work-content h4 {
+  margin: 18px 0 8px;
+  color: #162033;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.work-content p {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border-left: 4px solid rgba(47, 166, 115, 0.14);
+  border-radius: 6px;
+  background: var(--panel-soft);
+  color: #263141;
+  line-height: var(--readable-line);
+}
+
+.work-content p.muted,
+.muted {
+  color: var(--muted);
+}
+
+.work-content p.muted {
+  background: transparent;
+  border-left-color: rgba(15, 23, 42, 0.08);
+}
+
+.quote > strong {
+  display: block;
+  color: #0b0b0b;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: var(--readable-line);
+}
+
+.quote-detail {
+  display: block;
+  margin-top: 8px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: var(--readable-line);
+}
+
+.quote-detail-label {
+  color: var(--green-700);
+  font-weight: 900;
+}
+
+.project-logo {
+  width: 100%;
+  max-width: 880px;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  margin: 12px auto;
+  padding: 6px;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.activity-entry .work-content {
+  flex: 1;
+}
+
+.site-footer {
+  margin-top: 36px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+  background: rgba(47, 166, 115, 0.04);
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.site-footer .muted {
+  margin: 0;
+}
+
+.footer-links a {
+  color: var(--green-700);
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .pdf-btn {
   position: fixed;
-  bottom: 28px;
   right: 28px;
+  bottom: 28px;
+  z-index: 1500;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 10px 20px;
-  background: var(--green-700);
-  color: #fff;
-  border: none;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 0;
   border-radius: 999px;
-  font-family: 'Noto Sans KR', Inter, ui-sans-serif, system-ui, sans-serif;
+  background: var(--green-700);
+  color: #ffffff;
+  font-family: inherit;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-  z-index: 1500;
-  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.18);
+  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
+
 .pdf-btn:hover {
   background: var(--green-500);
   transform: translateY(-2px);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.22);
 }
-.pdf-btn:active {
-  transform: translateY(0);
-}
+
 .pdf-btn svg {
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 
-/* ===== 인쇄 / PDF 스타일 ===== */
-@page {
-  size: A4 portrait;
-  margin: 15mm 18mm 18mm 18mm;
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  z-index: 1600;
+  transform: translateX(-50%) translateY(8px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--green-700);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: all 0.25s ease;
 }
 
-@media print {
-  *,
-  *::before,
-  *::after {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    box-sizing: border-box !important;
+.toast.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.loading-state {
+  min-height: 52vh;
+}
+
+@media (min-width: 900px) {
+  .work-entry {
+    flex-direction: row;
+    align-items: flex-start;
   }
 
-  /* ── 화면 전용 요소 숨기기 ── */
-  .topbar,
-  .pdf-btn,
-  .site-footer {
-    display: none !important;
+  .work-meta {
+    flex: 0 0 220px;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
   }
 
-  html,
-  body {
-    background: #fff !important;
-    font-size: 9pt !important;
-    font-family: 'Noto Sans KR', Inter, ui-sans-serif, system-ui, sans-serif !important;
-    color: #0b0b0b !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
+  .work-meta.sticky {
+    position: sticky;
+    top: 96px;
   }
 
-  /* 페이지 여백은 @page가 담당 */
+  .work-content {
+    flex: 1;
+    min-width: 0;
+    padding-left: 20px;
+    border-left: 1px solid rgba(15, 23, 42, 0.06);
+  }
+}
+
+@media (max-width: 900px) {
+  .topbar-inner {
+    width: min(100% - 28px, 980px);
+    min-height: auto;
+    padding: 12px 0;
+    flex-wrap: wrap;
+  }
+
+  .topbar nav {
+    order: 3;
+    flex: 1 1 100%;
+  }
+
+  .topbar ul {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  main.content {
+    padding-top: 116px;
+  }
+
   .content {
-    padding: 0 !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    width: 100% !important;
-  }
-
-  .section {
-    padding: 0 !important;
-  }
-
-  .work-divider {
-    height: 0.5pt !important;
-    background: #ddd !important;
-    margin: 4pt 0 10pt !important;
-  }
-
-  /* ══════════════════════════════════════
-     페이지 분기 규칙
-     ── About             : 1페이지 (첫 페이지)
-     ── Work > 각 엔트리  : 엔트리마다 새 페이지
-     ── Project > 각 엔트리 : 엔트리마다 새 페이지
-     ── Activities        : 새 페이지 (합산)
-     ══════════════════════════════════════ */
-
-  /* Work 섹션 헤더(h2) → 새 페이지 */
-  #work {
-    page-break-before: always !important;
-    break-before: page !important;
-  }
-
-  /* Work 내 두 번째+ 엔트리 → 새 페이지 */
-  #work .work-entry + .work-entry {
-    page-break-before: always !important;
-    break-before: page !important;
-  }
-
-  /* Project 섹션 헤더 → 새 페이지 */
-  #project {
-    page-break-before: always !important;
-    break-before: page !important;
-  }
-
-  /* Project 내 두 번째+ 엔트리 → 새 페이지 */
-  #project .work-entry + .work-entry {
-    page-break-before: always !important;
-    break-before: page !important;
-  }
-
-  /* Activities → 새 페이지 (엔트리는 합산) */
-  #activities {
-    page-break-before: always !important;
-    break-before: page !important;
-  }
-
-  /* 제목 다음에서 페이지 끊기지 않도록 */
-  h2 {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-    font-size: 15pt !important;
-    color: #1f7a55 !important;
-    font-weight: 800 !important;
-    margin: 0 0 2pt !important;
-  }
-
-  h3 {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-    font-size: 10pt !important;
-    font-weight: 700 !important;
-    margin: 8pt 0 3pt !important;
-  }
-
-  h4 {
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-    font-size: 9pt !important;
-    font-weight: 700 !important;
-    margin: 5pt 0 2pt !important;
-  }
-
-  /* ── About 섹션 ── */
-  .intro .intro-inner {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    gap: 16pt !important;
-    align-items: flex-start !important;
-  }
-
-  .photo {
-    flex: 0 0 auto !important;
+    width: min(100% - 32px, 980px);
   }
 
   .photo img {
-    width: 90pt !important;
-    height: 90pt !important;
-    border-radius: 50% !important;
-    display: block !important;
-  }
-
-  .intro-text {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
+    width: 160px;
+    height: 160px;
   }
 
   .big {
-    font-size: 15pt !important;
-    color: #1f7a55 !important;
-    font-weight: 700 !important;
-    margin: 0 0 6pt !important;
+    font-size: 28px;
   }
 
-  .tech-stack,
-  .certs-inline {
-    margin-top: 8pt !important;
-  }
-
-  .tech-stack h3,
-  .certs-inline h3 {
-    font-size: 9pt !important;
-    color: #2fa673 !important;
-    margin: 0 0 4pt !important;
-  }
-
-  .tech-badges,
-  .cert-badges {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 4pt !important;
-  }
-
-  .tech-badge {
-    padding: 2pt 7pt !important;
-    font-size: 7.5pt !important;
-    font-weight: 600 !important;
-    border-radius: 999px !important;
-    border: 0.5pt solid #bbb !important;
-    background: #fff !important;
-    color: #1f7a55 !important;
-  }
-
-  .cert-badge {
-    padding: 2pt 7pt !important;
-    font-size: 7.5pt !important;
-    font-weight: 600 !important;
-    border-radius: 999px !important;
-    border: 0.5pt solid #ccc !important;
-    background: #f5f5f5 !important;
-    color: #6b6f6a !important;
-  }
-
-  /* values 는 사진+텍스트 아래 전체 너비로 배치 */
-  .values {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin-top: 4pt !important;
-    padding-top: 10pt !important;
-    border-top: 0.5pt solid #e8e8e8 !important;
-  }
-
-  .values h3 {
-    font-size: 9pt !important;
-    color: #2fa673 !important;
-    margin: 10pt 0 3pt !important;
-  }
-
-  .values ul {
-    margin: 0 0 0 14pt !important;
-    padding: 0 !important;
-    list-style: disc !important;
-  }
-
-  .values li {
-    font-size: 8.5pt !important;
-    line-height: 1.5 !important;
-    margin: 3pt 0 !important;
-  }
-
-  /* ── Work / Project / Activities 엔트리 공통 2단 레이아웃 ──
-     좌: 메타(회사명·기간) | 우: 내용 */
-  .work-list {
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  .work-entry {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    gap: 16pt !important;
-    padding-top: 6pt !important;
-  }
-
-  /* 좌측 메타 컬럼: 고정 너비 */
-  .work-meta,
-  .work-meta.sticky {
-    flex: 0 0 110pt !important;
-    width: 110pt !important;
-    min-width: 110pt !important;
-    max-width: 110pt !important;
-    position: static !important;
-    top: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 4pt !important;
+  .work-meta {
+    align-items: flex-start;
   }
 
   .work-meta img {
-    width: 48pt !important;
-    height: 48pt !important;
-    display: block !important;
-    object-fit: contain !important;
-    border-radius: 6pt !important;
-    border: 0.5pt solid #e0e0e0 !important;
-    padding: 4pt !important;
-    background: #fff !important;
+    width: 76px;
+    height: 76px;
   }
 
-  .work-meta img.no-pad {
-    padding: 0 !important;
-    border: none !important;
-    background: transparent !important;
-    object-fit: cover !important;
+  .pdf-btn {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 620px) {
+  .intro-inner {
+    align-items: flex-start;
   }
 
-  .work-meta .info h3 {
-    font-size: 10pt !important;
-    color: #1f7a55 !important;
-    font-weight: 700 !important;
-    margin: 0 0 3pt !important;
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
   }
+}
 
-  .work-meta .info span {
-    display: block !important;
-    font-size: 7.5pt !important;
-    color: #6b6f6a !important;
-    line-height: 1.45 !important;
-  }
-
-  /* 인쇄용 링크 영역: 아이콘 대신 텍스트로 표시 */
-  .meta-links {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 3pt !important;
-    margin-top: 6pt !important;
-  }
-
-  .meta-link {
-    display: block !important;
-    width: auto !important;
-    height: auto !important;
-    overflow: visible !important;
-    text-decoration: none !important;
-    font-size: 7.5pt !important;
-    color: #1f7a55 !important;
-    line-height: 1.5 !important;
-    word-break: break-all !important;
-    overflow-wrap: break-word !important;
-  }
-
-  /* 아이콘 이미지 숨기기 */
-  .meta-link img {
+@media print {
+  .topbar,
+  .site-footer,
+  .pdf-btn {
     display: none !important;
   }
 
-  /* ::before / ::after 제거 (attr(href) 방식은 브라우저마다 잘림) */
-  .meta-link::before,
-  .meta-link::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  /* HTML에 직접 삽입된 출력용 텍스트 표시 */
-  .print-url {
-    display: block !important;
-    font-size: 7.5pt !important;
-    line-height: 1.5 !important;
-    word-break: break-all !important;
-    overflow-wrap: break-word !important;
-    color: #333 !important;
-  }
-
-  .print-url b {
-    color: #1f7a55 !important;
-    font-weight: 700 !important;
-  }
-
-  /* 우측 내용 컬럼 */
-  .work-content {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    padding-left: 14pt !important;
-    border-left: 1pt solid #e0e0e0 !important;
-  }
-
-  /* quote 단락 */
-  .work-content p {
-    background: #f8f8f8 !important;
-    border-left: 2.5pt solid #c3ddd1 !important;
-    padding: 5pt 10pt !important;
-    margin: 5pt 0 !important;
-    font-size: 8.5pt !important;
-    line-height: 1.55 !important;
-    border-radius: 3pt !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  .work-content p.muted {
-    background: transparent !important;
-    border-left-color: #e5e5e5 !important;
-    color: #6b6f6a !important;
-  }
-
-  .work-content .quote > strong {
-    font-size: 9pt !important;
-    font-weight: 700 !important;
-    display: block !important;
-    margin-bottom: 3pt !important;
-    color: #0b0b0b !important;
-  }
-
-  .work-content .quote .quote-detail.muted {
-    font-size: 8pt !important;
-    color: #222 !important;
-    line-height: 1.55 !important;
-    display: block !important;
-    margin-top: 3pt !important;
-  }
-
-  /* 프로젝트 이미지 */
-  .project-logo {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 130pt !important;
-    height: auto !important;
-    object-fit: contain !important;
-    margin: 6pt 0 !important;
-    border-radius: 5pt !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
-  }
-
-  /* 본문 내 일반 링크 URL 자동 출력 방지 (meta-link::after는 더 높은 명시도로 유지됨) */
-  a:not(.meta-link)::after {
-    content: "" !important;
-    display: none !important;
+  main.content {
+    padding-top: 0 !important;
   }
 }
