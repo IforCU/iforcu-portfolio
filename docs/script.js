@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const data = await loadPortfolioData();
     renderShellLinks(data.profile);
     renderWebPortfolio(data);
+    if (window.renderPrintPortfolio) window.renderPrintPortfolio(data);
     bindInteractions();
   } catch (error) {
     renderLoadError(error);

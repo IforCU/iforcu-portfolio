@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>김승현 - PDF Portfolio Preview</title>
+    <meta name="description" content="김승현 PDF 포트폴리오 미리보기" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260531" />
+    <link rel="stylesheet" href="pdf.css?v=20260531" />
+  </head>
+  <body class="pdf-preview">
+    <header class="pdf-preview-toolbar">
+      <strong>PDF Portfolio Preview</strong>
+      <div class="pdf-preview-actions">
+        <a href="index.html">웹 포트폴리오</a>
+        <button type="button" onclick="window.print()">PDF 저장</button>
+      </div>
+    </header>
+
+    <section class="print-portfolio" id="print-root" aria-label="PDF portfolio deck"></section>
+
+    <noscript>PDF 포트폴리오를 표시하려면 JavaScript가 필요합니다.</noscript>
+    <script src="data/portfolio-data.js?v=20260531"></script>
+    <script src="pdf.js?v=20260531"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.PORTFOLIO_DATA && window.renderPrintPortfolio) {
+          window.renderPrintPortfolio(window.PORTFOLIO_DATA);
+        }
+      });
+    </script>
+  </body>
+</html>

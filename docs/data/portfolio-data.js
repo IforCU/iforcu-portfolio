@@ -36,7 +36,7 @@ window.PORTFOLIO_DATA = {
         "description": "배포, 자동화, 운영 가이드를 함께 설계"
       },
       {
-        "title": "Collaboration",
+        "title": "Tools",
         "description": "문서화와 책임감 있는 마무리"
       }
     ],
@@ -81,7 +81,8 @@ window.PORTFOLIO_DATA = {
         "items": [
           "Spring",
           "Spring Boot",
-          "Java"
+          "Java",
+          "Linux"
         ]
       },
       {
@@ -90,6 +91,7 @@ window.PORTFOLIO_DATA = {
           "Docker",
           "Nginx",
           "Jenkins",
+          "GitHub Actions",
           "AWS"
         ]
       },
@@ -101,10 +103,10 @@ window.PORTFOLIO_DATA = {
         ]
       },
       {
-        "category": "Collaboration",
+        "category": "Tools",
         "items": [
-          "GitHub Actions",
-          "Git"
+          "Git",
+          "Copilot",
         ]
       }
     ],
@@ -135,9 +137,32 @@ window.PORTFOLIO_DATA = {
         "description": "웹 풀스택 개발자 과정"
       },
       {
-        "title": "OO대학교",
+        "title": "수원대학교",
         "period": "2018.03 - 2025.02",
         "description": "컴퓨터 소프트웨어 학과 전공"
+      }
+    ],
+    "awards": [
+      {
+        "program": "삼성청년SW AI 아카데미 1학기",
+        "title": "1학기 프로젝트 우수상",
+        "description": "1학기 관통 프로젝트 서울 11반 2등",
+        "host": "삼성전자",
+        "date": "2025.12.26"
+      },
+      {
+        "program": "삼성청년SW AI 아카데미 2학기",
+        "title": "우수상",
+        "description": "[2학기] 공통 프로젝트 서울 6반 1등",
+        "host": "삼성전자",
+        "date": "2026.02.19"
+      },
+      {
+        "program": "삼성청년 SW AI 아카데미 2학기",
+        "title": "우수상",
+        "description": "[2학기] 자율 프로젝트 서울 1반 1등",
+        "host": "삼성전자",
+        "date": "2026.05.28"
       }
     ]
   },
@@ -330,7 +355,8 @@ window.PORTFOLIO_DATA = {
         "AWS ECS/SQS/S3",
         "Terraform",
         "Jenkins",
-        "Redis"
+        "Redis",
+        "WebSocket"
       ],
       "links": [
         {
@@ -804,7 +830,7 @@ window.PORTFOLIO_DATA = {
         "pgVector",
         "Redis",
         "AWS",
-        "OpenAI",
+        "OpenAI Embeddings",
         "GitHub Actions"
       ],
       "links": [

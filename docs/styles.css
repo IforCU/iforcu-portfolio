@@ -585,15 +585,3 @@ h2 {
     align-items: flex-start;
   }
 }
-
-@media print {
-  .topbar,
-  .site-footer,
-  .pdf-btn {
-    display: none !important;
-  }
-
-  main.content {
-    padding-top: 0 !important;
-  }
-}
