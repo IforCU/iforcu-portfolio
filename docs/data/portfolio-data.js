@@ -958,7 +958,7 @@ window.PORTFOLIO_DATA = {
         "PM",
         "Backend"
       ],
-      "period": "2024.03 - 2024.11 (8개월)",
+      "period": "2023.03 - 2023.11 (8개월)",
       "teamSize": "3인 개발",
       "asset": {
         "src": "assets/lime.webp",
