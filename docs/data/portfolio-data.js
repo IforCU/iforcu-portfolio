@@ -128,7 +128,7 @@ window.PORTFOLIO_DATA = {
     "activities": [
       {
         "title": "SSAFY 14기",
-        "period": "2025.07 - 현재",
+        "period": "2025.07 - 2026.06",
         "description": "JAVA 전공반"
       },
       {
@@ -168,163 +168,15 @@ window.PORTFOLIO_DATA = {
   },
   "print": {
     "order": [
-      "kyobo-cspm",
       "autoqa",
       "reflow",
       "a601",
       "newstagram",
+      "kyobo-cspm",
       "lime"
     ]
   },
   "cases": [
-    {
-      "id": "kyobo-cspm",
-      "type": "work",
-      "title": "KYOBO_DTS CSPM",
-      "roles": [
-        "DevOps",
-        "Backend"
-      ],
-      "period": "2024.07 - 2024.08 (2개월)",
-      "teamSize": "6인 개발",
-      "asset": {
-        "src": "assets/KYOBO_DTS.webp",
-        "alt": "KYOBO_DTS logo"
-      },
-      "overview": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 자원을 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다.",
-      "process": [
-        "AWS 자원 수집",
-        "정책 기반 취약점 판단",
-        "OPEN/EXCEPTION/CLOSE 상태 트래킹",
-        "사내망 배포"
-      ],
-      "tech": [
-        "Spring Boot",
-        "AWS SDK",
-        "PostgreSQL",
-        "Docker",
-        "Jenkins"
-      ],
-      "links": [
-        {
-          "type": "demo",
-          "label": "Demo",
-          "url": "https://www.youtube.com/watch?v=l1heVLMG6bE"
-        }
-      ],
-      "contributions": [
-        "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
-        "확장성을 고려한 **DB 테이블 재설계**",
-        "**취약점 탐지 및 상태 관리 시스템** 설계/구현",
-        "CI 구성 및 개발 환경 가이드 문서화",
-        "사내망 배포 및 접근 제어 개선"
-      ],
-      "troubleshooting": [
-        {
-          "title": "DB 테이블 과다 생성 문제 개선",
-          "summary": "자원별 테이블 분리를 JSON 기반 단일 테이블 구조로 통합해 유지보수성과 확장성을 개선했습니다.",
-          "problem": "자원별 테이블 분리로 AWS 수집 자원이 늘어날때마다 DB 테이블이 늘어나야 되는 상황이 발생했고, 그로 인해 **유지보수 및 확장성 문제**가 발생했습니다.",
-          "solution": "모든 자원을 JSON 형태로 단일 테이블에 저장하도록 변경했습니다. 리소스 타입은 구분 필드로 관리해 **기존 14개 이상 테이블을 1개**로 통합했습니다.",
-          "lesson": "확장성이 요구되는 도메인에서는 정적 스키마 설계보다 **유연한 데이터 모델이 중요**하다는 점을 배웠고, 이 경험을 통해 NoSQL에도 관심을 가지게 되었습니다."
-        },
-        {
-          "title": "자원 중복 저장 및 취약점 판단 방식 고도화",
-          "summary": "JSON 키 정렬 후 문자열 비교로 변경 여부를 판단해 불필요한 적재를 줄였습니다.",
-          "problem": "스캔 시 **중복 자원 저장**으로 데이터 적재가 과다해지는 문제가 있었습니다.",
-          "solution": "JSON 키 정렬 후 문자열 비교로 변경 여부를 판단하고, 변경이 없으면 timestamp만 갱신하도록 개선했습니다.",
-          "lesson": "데이터 비교는 내용 기반 비교 이전에 구조 표준화가 필요하다고 느꼈습니다. 또한 **해시 기반 비교를 적용하면 더 최적화**할 수 있음을 깨달았습니다."
-        },
-        {
-          "title": "기존 코드 기반 기능 확장",
-          "summary": "기존 로직을 먼저 디버깅하고 이해한 뒤 점진적으로 기능을 확장해 통합했습니다.",
-          "problem": "이미 일부 구현된 코드에 새로운 요구사항을 반영해야 하는 상황이었습니다.",
-          "solution": "먼저 핵심 로직을 분석하고 관련 메서드를 디버깅해 역할을 파악한 뒤, 점진적으로 기능을 구현하고 기존 코드와 통합했습니다.",
-          "lesson": "**레거시 코드** 확장은 수정으로 시작하는 것이 아니라 **이해부터 시작**해야 한다고 생각하게 되었습니다. 또한 하나의 기능에 대한 API 명세서가 자세할수록 협업 품질이 좋아진다는 점을 느꼈습니다."
-        }
-      ],
-      "printTheme": "theme-cspm",
-      "webDetails": [
-        {
-          "type": "heading",
-          "text": "프로젝트 개요"
-        },
-        {
-          "type": "paragraph",
-          "text": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 계정의 리소스를 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다. 자원 수집부터 취약점 판단, 상태 추적, 사내망 배포까지 담당하며 운영 가능한 구조를 만드는 데 집중했습니다."
-        },
-        {
-          "type": "image",
-          "src": "assets/KYOBO_overview.png",
-          "alt": "프로젝트 개요 이미지"
-        },
-        {
-          "type": "heading",
-          "text": "핵심 로직"
-        },
-        {
-          "type": "paragraph",
-          "text": "**자원 수집 → 정책 기반 취약점 판단 → OPEN/EXCEPTION/CLOSE 상태 트래킹**으로 이어지는 파이프라인과 스케줄러가 핵심입니다. AWS 자원이 늘어나도 데이터 모델과 상태 관리 흐름이 무너지지 않도록 구조를 정리했습니다."
-        },
-        {
-          "type": "image",
-          "src": "assets/KYOBO_architecture.png",
-          "alt": "아키텍처 다이어그램"
-        },
-        {
-          "type": "heading",
-          "text": "주요 기여도"
-        },
-        {
-          "type": "heading",
-          "text": "Backend",
-          "level": 4
-        },
-        {
-          "type": "list",
-          "items": [
-            "AWS SDK 기반 자원 스캔 로직 개발 및 고도화",
-            "DB 테이블 재설계",
-            "취약점 탐지 및 상태 관리 시스템 설계/구현"
-          ]
-        },
-        {
-          "type": "heading",
-          "text": "DevOps",
-          "level": 4
-        },
-        {
-          "type": "list",
-          "items": [
-            "CI 구성 및 개발 환경 가이드",
-            "사내망 배포 및 접근 제어 개선"
-          ]
-        },
-        {
-          "type": "heading",
-          "text": "트러블 슈팅"
-        },
-        {
-          "type": "troubleshooting"
-        }
-      ],
-      "roleContributions": [
-        {
-          "role": "Backend",
-          "items": [
-            "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
-            "자원 타입 증가에 대응하기 위한 **DB 테이블 재설계**",
-            "**취약점 탐지 및 상태 관리 시스템** 설계/구현"
-          ]
-        },
-        {
-          "role": "DevOps",
-          "items": [
-            "**CI 구성 및 개발 환경 가이드** 문서화",
-            "**사내망 배포 및 접근 제어** 개선"
-          ]
-        }
-      ]
-    },
     {
       "id": "autoqa",
       "type": "project",
@@ -946,6 +798,154 @@ window.PORTFOLIO_DATA = {
             "**Docker 기반 개발 환경 통합** 및 초기 가이드 수립",
             "**GitHub Actions 기반 CI/CD** 구축",
             "**AWS 기반 MSA 환경 구축 및 CloudWatch 모니터링 체계** 설계"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kyobo-cspm",
+      "type": "project",
+      "title": "KYOBO_DTS CSPM",
+      "roles": [
+        "DevOps",
+        "Backend"
+      ],
+      "period": "2024.07 - 2024.08 (2개월)",
+      "teamSize": "6인 개발",
+      "asset": {
+        "src": "assets/KYOBO_DTS.webp",
+        "alt": "KYOBO_DTS logo"
+      },
+      "overview": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 자원을 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다.",
+      "process": [
+        "AWS 자원 수집",
+        "정책 기반 취약점 판단",
+        "OPEN/EXCEPTION/CLOSE 상태 트래킹",
+        "사내망 배포"
+      ],
+      "tech": [
+        "Spring Boot",
+        "AWS SDK",
+        "PostgreSQL",
+        "Docker",
+        "Jenkins"
+      ],
+      "links": [
+        {
+          "type": "demo",
+          "label": "Demo",
+          "url": "https://www.youtube.com/watch?v=l1heVLMG6bE"
+        }
+      ],
+      "contributions": [
+        "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
+        "확장성을 고려한 **DB 테이블 재설계**",
+        "**취약점 탐지 및 상태 관리 시스템** 설계/구현",
+        "CI 구성 및 개발 환경 가이드 문서화",
+        "사내망 배포 및 접근 제어 개선"
+      ],
+      "troubleshooting": [
+        {
+          "title": "DB 테이블 과다 생성 문제 개선",
+          "summary": "자원별 테이블 분리를 JSON 기반 단일 테이블 구조로 통합해 유지보수성과 확장성을 개선했습니다.",
+          "problem": "자원별 테이블 분리로 AWS 수집 자원이 늘어날때마다 DB 테이블이 늘어나야 되는 상황이 발생했고, 그로 인해 **유지보수 및 확장성 문제**가 발생했습니다.",
+          "solution": "모든 자원을 JSON 형태로 단일 테이블에 저장하도록 변경했습니다. 리소스 타입은 구분 필드로 관리해 **기존 14개 이상 테이블을 1개**로 통합했습니다.",
+          "lesson": "확장성이 요구되는 도메인에서는 정적 스키마 설계보다 **유연한 데이터 모델이 중요**하다는 점을 배웠고, 이 경험을 통해 NoSQL에도 관심을 가지게 되었습니다."
+        },
+        {
+          "title": "자원 중복 저장 및 취약점 판단 방식 고도화",
+          "summary": "JSON 키 정렬 후 문자열 비교로 변경 여부를 판단해 불필요한 적재를 줄였습니다.",
+          "problem": "스캔 시 **중복 자원 저장**으로 데이터 적재가 과다해지는 문제가 있었습니다.",
+          "solution": "JSON 키 정렬 후 문자열 비교로 변경 여부를 판단하고, 변경이 없으면 timestamp만 갱신하도록 개선했습니다.",
+          "lesson": "데이터 비교는 내용 기반 비교 이전에 구조 표준화가 필요하다고 느꼈습니다. 또한 **해시 기반 비교를 적용하면 더 최적화**할 수 있음을 깨달았습니다."
+        },
+        {
+          "title": "기존 코드 기반 기능 확장",
+          "summary": "기존 로직을 먼저 디버깅하고 이해한 뒤 점진적으로 기능을 확장해 통합했습니다.",
+          "problem": "이미 일부 구현된 코드에 새로운 요구사항을 반영해야 하는 상황이었습니다.",
+          "solution": "먼저 핵심 로직을 분석하고 관련 메서드를 디버깅해 역할을 파악한 뒤, 점진적으로 기능을 구현하고 기존 코드와 통합했습니다.",
+          "lesson": "**레거시 코드** 확장은 수정으로 시작하는 것이 아니라 **이해부터 시작**해야 한다고 생각하게 되었습니다. 또한 하나의 기능에 대한 API 명세서가 자세할수록 협업 품질이 좋아진다는 점을 느꼈습니다."
+        }
+      ],
+      "printTheme": "theme-cspm",
+      "webDetails": [
+        {
+          "type": "heading",
+          "text": "프로젝트 개요"
+        },
+        {
+          "type": "paragraph",
+          "text": "**Cloud Security Posture Management(CSPM)** 기반으로 AWS 계정의 리소스를 수집·스캔하고, 정책 기준으로 취약점을 탐지해 상태를 관리하는 시스템입니다. 자원 수집부터 취약점 판단, 상태 추적, 사내망 배포까지 담당하며 운영 가능한 구조를 만드는 데 집중했습니다."
+        },
+        {
+          "type": "image",
+          "src": "assets/KYOBO_overview.png",
+          "alt": "프로젝트 개요 이미지"
+        },
+        {
+          "type": "heading",
+          "text": "핵심 로직"
+        },
+        {
+          "type": "paragraph",
+          "text": "**자원 수집 → 정책 기반 취약점 판단 → OPEN/EXCEPTION/CLOSE 상태 트래킹**으로 이어지는 파이프라인과 스케줄러가 핵심입니다. AWS 자원이 늘어나도 데이터 모델과 상태 관리 흐름이 무너지지 않도록 구조를 정리했습니다."
+        },
+        {
+          "type": "image",
+          "src": "assets/KYOBO_architecture.png",
+          "alt": "아키텍처 다이어그램"
+        },
+        {
+          "type": "heading",
+          "text": "주요 기여도"
+        },
+        {
+          "type": "heading",
+          "text": "Backend",
+          "level": 4
+        },
+        {
+          "type": "list",
+          "items": [
+            "AWS SDK 기반 자원 스캔 로직 개발 및 고도화",
+            "DB 테이블 재설계",
+            "취약점 탐지 및 상태 관리 시스템 설계/구현"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "DevOps",
+          "level": 4
+        },
+        {
+          "type": "list",
+          "items": [
+            "CI 구성 및 개발 환경 가이드",
+            "사내망 배포 및 접근 제어 개선"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "트러블 슈팅"
+        },
+        {
+          "type": "troubleshooting"
+        }
+      ],
+      "roleContributions": [
+        {
+          "role": "Backend",
+          "items": [
+            "**AWS SDK 기반 자원 스캔 로직** 개발 및 고도화",
+            "자원 타입 증가에 대응하기 위한 **DB 테이블 재설계**",
+            "**취약점 탐지 및 상태 관리 시스템** 설계/구현"
+          ]
+        },
+        {
+          "role": "DevOps",
+          "items": [
+            "**CI 구성 및 개발 환경 가이드** 문서화",
+            "**사내망 배포 및 접근 제어** 개선"
           ]
         }
       ]

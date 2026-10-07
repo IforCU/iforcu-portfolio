@@ -55,12 +55,10 @@ function renderShellLinks(profile) {
 
 function renderWebPortfolio(data) {
   const root = document.getElementById("web-root");
-  const workCases = data.cases.filter((item) => item.type === "work");
   const projectCases = data.cases.filter((item) => item.type === "project");
 
   root.replaceChildren(
     renderAboutSection(data.profile),
-    renderCaseSection("work", "Work Experience", workCases),
     renderCaseSection("project", "Project", projectCases),
     renderActivitiesSection(data.profile.activities),
   );
@@ -110,7 +108,7 @@ function renderCertifications(certifications) {
 }
 
 function renderCaseSection(id, title, cases) {
-  return el("section", { id, className: `section ${id === "project" ? "projects" : "work-section"}` }, [
+  return el("section", { id, className: "section projects" }, [
     el("h2", {}, title),
     el("div", { className: "work-divider", ariaHidden: "true" }),
     el("div", { className: "work-list" }, cases.map(renderWebCase)),
