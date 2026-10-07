@@ -106,7 +106,6 @@ window.PORTFOLIO_DATA = {
         "category": "Tools",
         "items": [
           "Git",
-          "Copilot",
         ]
       }
     ],
